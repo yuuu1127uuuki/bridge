@@ -5,7 +5,7 @@ import axios from 'axios';
 // axios.defaults.baseURL = `http://${hostname}:8000`
 axios.defaults.baseURL = `https://bridge-backend-6wcu.onrender.com`
 
-const FilterButton = ({ column, value, onResults }) => {
+const FilterButton = ({ column, value, onResults, text }) => {
   const handleClick = async () => {
     axios.get("/getopendata").then( ({data: res}) => {
       if(!res){
@@ -13,7 +13,13 @@ const FilterButton = ({ column, value, onResults }) => {
       } else {
         try {
           // データベースから一致するレコードを取得
-          const filteredBridges = res.filter(item => item[column].includes(value));
+          const filteredBridges = res.filter(item =>{
+            if (typeof value === 'string') {
+              return item[column].includes(value);
+            } else if (typeof value === 'number') {
+              return item[column] === value;
+            }return false;
+          } );
           onResults(filteredBridges);
         } catch (error) {
           console.error('データの取得に失敗しました', error);
@@ -24,7 +30,7 @@ const FilterButton = ({ column, value, onResults }) => {
   };
 
   return (
-    <Button onClick={handleClick} text={value}>
+    <Button onClick={handleClick} text={text}>
       {/* {`${column} が "${value}" に一致するレコードを検索`} */}
     </Button>
   );

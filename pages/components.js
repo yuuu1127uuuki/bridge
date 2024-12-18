@@ -45,6 +45,7 @@ export default function About() {
             column="Rank"
             value="Ⅱ"
             onResults={handleFilterResults}
+            text="Ⅱ"
           />
         </div>
         <div style={{ padding: '16px' }}>
