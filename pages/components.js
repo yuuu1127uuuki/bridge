@@ -4,6 +4,7 @@ import FilterButton from "../components/FilterButton"; // FilterButtonコンポ�
 import ResetButton from "../components/ResetButton"; // ResetButtonコンポーネントをインポート
 
 import { useState } from "react";
+import InfoWindow from "../components/InfoWindow";
 
 export default function About() {
   const [searchResult, setSearchResult] = useState('');
@@ -52,6 +53,10 @@ export default function About() {
           {/* ResetButton コンポーネントを追加 */}
           <h1>Reset Button Example</h1>
           <ResetButton />
+        </div>
+        <div style={{ padding: '16px' }}>
+          <h1>InfoWindow Example</h1>
+          <InfoWindow  data={{_id: "123456-78-90", name: "橋梁名", Id: "37,135"}} />
         </div>
       </div>
     </div>

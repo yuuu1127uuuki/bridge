@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+// 検索ボックスコンポーネント
 const SearchBox = ({ onSearch }) => {
   const [query, setQuery] = useState('');
 

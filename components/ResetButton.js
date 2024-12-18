@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from './Button';
-
+// ページをリロードするボタン
 function ResetButton() {
     const handleClick = () => {
         window.location.reload();

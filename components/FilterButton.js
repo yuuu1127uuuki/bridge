@@ -2,6 +2,8 @@ import React from 'react';
 import Button from './Button';
 import axios from 'axios';
 
+// データを絞り込むボタンコンポーネント
+
 // axios.defaults.baseURL = `http://${hostname}:8000`
 axios.defaults.baseURL = `https://bridge-backend-6wcu.onrender.com`
 

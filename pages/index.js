@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import FilterButton from '../components/FilterButton';
 import SearchBox from '../components/SearchBox';
 import ResetButton from '../components/ResetButton';
+import InfoWindow from '../components/InfoWindow';
 
 const currentYear = new Date().getFullYear();
 
@@ -27,6 +28,9 @@ export default function Home() {
       <FilterButton column="Date" value={currentYear - 4} onResults={handleRankButtonClick} text="4" />
       <FilterButton column="Date" value={currentYear - 5} onResults={handleRankButtonClick} text="5" />
       {/* <FilterButton column="Date" value={!((currentYear - 1) && (currentYear -2) && (currentYear-3) && (currentYear-4) && (currentYear-5))} onResults={handleRankButtonClick} text="6年以上" /> */}
+      <div style={{ marginTop: '20px' }}>
+        <InfoWindow data={[]} />
+        </div>
     </div>
   );
 }
