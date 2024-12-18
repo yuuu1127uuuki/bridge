@@ -1,6 +1,7 @@
 import SearchBox from "../components/SearchBox";
 import Button from "../components/Button";
 import FilterButton from "../components/FilterButton"; // FilterButtonコンポーネントをインポート
+import ResetButton from "../components/ResetButton"; // ResetButtonコンポーネントをインポート
 
 import { useState } from "react";
 
@@ -45,6 +46,11 @@ export default function About() {
             value="Ⅱ"
             onResults={handleFilterResults}
           />
+        </div>
+        <div style={{ padding: '16px' }}>
+          {/* ResetButton コンポーネントを追加 */}
+          <h1>Reset Button Example</h1>
+          <ResetButton />
         </div>
       </div>
     </div>
