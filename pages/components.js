@@ -2,12 +2,27 @@ import SearchBox from "../components/Atoms/SearchBox";
 import Button from "../components/Atoms/Button"; 
 import FilterButton from "../components/Molecules/FilterButton"; 
 import ResetButton from "../components/Molecules/ResetButton";
-import { useState } from "react";
-import InfoWindow from "../components/Atoms/InfoWindow";
+import { useState, useEffect } from "react";
+import InfoWindow from "../components/Atoms/ConsoleWindow";
 import MapConponent from "../components/Atoms/MapComponent";
+import axios from "axios";
+
+axios.defaults.baseURL = `https://bridge-backend-6wcu.onrender.com`
 
 export default function About() {
   const [searchResult, setSearchResult] = useState('');
+  const [bridgedata, setBridgedata] = useState([]);
+
+  useEffect(() => {
+    axios.get("/getopendata")
+      .then(response => {
+        setBridgedata(response.data);
+      })
+      .catch(error => {
+        console.error('データの取得に失敗しました', error);
+      });
+  }, []);
+
   const handleSearch = (query) => {
     console.log('Search query:', query);
     setSearchResult(query); // 実際にはAPI呼び出しなどに利用
@@ -55,12 +70,12 @@ export default function About() {
           <ResetButton />
         </div>
         <div style={{ padding: '16px' }}>
-          <h1>InfoWindow Example</h1>
+          <h1>ConsoleWindow Example</h1>
           <InfoWindow  data={{_id: "123456-78-90", name: "橋梁名", Id: "37,135"}} />
         </div>
         <div style={{ padding: '16px' }}>
           <h1>Map Example</h1>
-          <MapConponent />
+          <MapConponent  data={bridgedata}/>
         </div>
       </div>
     </div>

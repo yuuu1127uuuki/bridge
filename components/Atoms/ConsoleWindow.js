@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from './Button';
 
-const InfoWindow = ({ data, onEdit, onDelete }) => {
+const ConsoleWindow = ({ data, onEdit, onDelete }) => {
   return (
     <table border="1" style={{ width: '100%', textAlign: 'left' }}>
       <thead>
@@ -33,4 +33,4 @@ const InfoWindow = ({ data, onEdit, onDelete }) => {
   );
 };
 
-export default InfoWindow;
+export default ConsoleWindow;
