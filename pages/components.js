@@ -1,10 +1,10 @@
-import SearchBox from "../components/SearchBox";
-import Button from "../components/Button";
-import FilterButton from "../components/FilterButton"; // FilterButtonコンポーネントをインポート
-import ResetButton from "../components/ResetButton"; // ResetButtonコンポーネントをインポート
-
+import SearchBox from "../components/Atoms/SearchBox";
+import Button from "../components/Atoms/Button"; 
+import FilterButton from "../components/Molecules/FilterButton"; 
+import ResetButton from "../components/Molecules/ResetButton";
 import { useState } from "react";
-import InfoWindow from "../components/InfoWindow";
+import InfoWindow from "../components/Atoms/InfoWindow";
+import MapConponent from "../components/Atoms/MapComponent";
 
 export default function About() {
   const [searchResult, setSearchResult] = useState('');
@@ -57,6 +57,10 @@ export default function About() {
         <div style={{ padding: '16px' }}>
           <h1>InfoWindow Example</h1>
           <InfoWindow  data={{_id: "123456-78-90", name: "橋梁名", Id: "37,135"}} />
+        </div>
+        <div style={{ padding: '16px' }}>
+          <h1>Map Example</h1>
+          <MapConponent />
         </div>
       </div>
     </div>

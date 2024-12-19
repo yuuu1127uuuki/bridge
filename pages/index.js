@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import FilterButton from '../components/FilterButton';
-import SearchBox from '../components/SearchBox';
-import ResetButton from '../components/ResetButton';
-import InfoWindow from '../components/InfoWindow';
+import FilterButton from '../components/Molecules/FilterButton';
+import SearchBox from '../components/Atoms/SearchBox';
+import ResetButton from '../components/Molecules/ResetButton';
+import InfoWindow from '../components/Atoms/InfoWindow';
 
 const currentYear = new Date().getFullYear();
 
