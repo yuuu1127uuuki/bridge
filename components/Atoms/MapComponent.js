@@ -21,7 +21,7 @@ const MapConponent = ({ data, onMarkerClick }) => {
       disableDefaultUI={true}
     >
       {data.map((item) => {
-        const [lat, lng] = item.Id.split(',').map(Number); // 緯度経度を分解
+        const [lat, lng] = item.Id.split(',').map((coord) => parseFloat(coord.trim()));
         return (
           <Marker
             key={item._id}
