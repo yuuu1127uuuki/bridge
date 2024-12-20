@@ -2,13 +2,11 @@ import React from 'react';
 import Button from '../Atoms/Button';
 // ページをリロードするボタン
 function ResetButton() {
-    const handleClick = () => {
-        window.location.reload();
-    };
+  const handleClick = () => {
+    window.location.reload();
+  };
 
-    return (
-        <Button onClick={handleClick} text="リセット" />
-    );
+  return <Button onClick={handleClick} text="リセット" />;
 }
 
 export default ResetButton;

@@ -1,24 +1,25 @@
-import SearchBox from "../components/Atoms/SearchBox";
-import Button from "../components/Atoms/Button"; 
-import FilterButton from "../components/Molecules/FilterButton"; 
-import ResetButton from "../components/Molecules/ResetButton";
-import { useState, useEffect } from "react";
-import InfoWindow from "../components/Atoms/ConsoleWindow";
-import MapConponent from "../components/Atoms/MapComponent";
-import axios from "axios";
+import SearchBox from '../components/Atoms/SearchBox';
+import Button from '../components/Atoms/Button';
+import FilterButton from '../components/Molecules/FilterButton';
+import ResetButton from '../components/Molecules/ResetButton';
+import { useState, useEffect } from 'react';
+import InfoWindow from '../components/Atoms/ConsoleWindow';
+import MapConponent from '../components/Atoms/MapComponent';
+import axios from 'axios';
 
-axios.defaults.baseURL = `https://bridge-backend-6wcu.onrender.com`
+axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
 
 export default function About() {
   const [searchResult, setSearchResult] = useState('');
   const [bridgedata, setBridgedata] = useState([]);
 
   useEffect(() => {
-    axios.get("/getopendata")
-      .then(response => {
+    axios
+      .get('/getopendata')
+      .then((response) => {
         setBridgedata(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('データの取得に失敗しました', error);
       });
   }, []);
@@ -71,11 +72,13 @@ export default function About() {
         </div>
         <div style={{ padding: '16px' }}>
           <h1>ConsoleWindow Example</h1>
-          <InfoWindow  data={{_id: "123456-78-90", name: "橋梁名", Id: "37,135"}} />
+          <InfoWindow
+            data={{ _id: '123456-78-90', name: '橋梁名', Id: '37,135' }}
+          />
         </div>
         <div style={{ padding: '16px' }}>
           <h1>Map Example</h1>
-          <MapConponent  data={bridgedata}/>
+          <MapConponent data={bridgedata} />
         </div>
       </div>
     </div>

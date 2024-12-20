@@ -25,7 +25,9 @@ const ConsoleWindow = ({ data, onEdit, onDelete }) => {
           </tr>
         ) : (
           <tr>
-            <td colSpan="4" style={{ textAlign: 'center' }}>データが選択されていません</td>
+            <td colSpan="4" style={{ textAlign: 'center' }}>
+              データが選択されていません
+            </td>
           </tr>
         )}
       </tbody>
