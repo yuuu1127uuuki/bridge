@@ -3,7 +3,7 @@ import Button from './Button';
 
 const ConsoleWindow = ({ data, onEdit, onDelete }) => {
   return (
-    <table border="1" style={{ width: '100%', textAlign: 'left' }}>
+    <table border="1" style={{ width: '100%', textAlign: 'center', tableLayout: 'fixed' }}>
       <thead>
         <tr>
           <th>ID</th>
