@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import FilterButton from '../components/Molecules/FilterButton';
 import SearchBox from '../components/Atoms/SearchBox';
 import ResetButton from '../components/Molecules/ResetButton';
 import ConsoleWindow from '../components/Atoms/ConsoleWindow';
@@ -8,10 +7,9 @@ import Button from '../components/Atoms/Button';
 import Modal from '../components/Organisms/Modal';
 import axios from 'axios';
 import RankButtons from '../components/Organisms/RankButtons';
+import YearButtons from '../components/Organisms/YeraButtons';
 
 axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
-
-const currentYear = new Date().getFullYear();
 
 export default function Home() {
   const [isAddModaiOpen, setIsAddModaiOpen] = React.useState(false);
@@ -50,37 +48,7 @@ export default function Home() {
           <RankButtons handleRankButtonClick={handleRankButtonClick} />
         </div>
         <ResetButton />
-        <FilterButton
-          column="Date"
-          value={currentYear - 1}
-          onResults={handleRankButtonClick}
-          text="1"
-        />
-        <FilterButton
-          column="Date"
-          value={currentYear - 2}
-          onResults={handleRankButtonClick}
-          text="2"
-        />
-        <FilterButton
-          column="Date"
-          value={currentYear - 3}
-          onResults={handleRankButtonClick}
-          text="3"
-        />
-        <FilterButton
-          column="Date"
-          value={currentYear - 4}
-          onResults={handleRankButtonClick}
-          text="4"
-        />
-        <FilterButton
-          column="Date"
-          value={currentYear - 5}
-          onResults={handleRankButtonClick}
-          text="5"
-        />
-        {/* <FilterButton column="Date" value={!((currentYear - 1) && (currentYear -2) && (currentYear-3) && (currentYear-4) && (currentYear-5))} onResults={handleRankButtonClick} text="6年以上" /> */}
+        <YearButtons handleYearButtonClick={handleRankButtonClick} />
         <div style={{ marginTop: '20px' }}>
           <ConsoleWindow data={selectedMarker} />
         </div>
