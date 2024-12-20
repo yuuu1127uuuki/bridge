@@ -13,6 +13,7 @@ axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
 
 export default function Home() {
   const [isAddModaiOpen, setIsAddModaiOpen] = React.useState(false);
+  const [isEditModaiOpen, setIsEditModaiOpen] = React.useState(false);
   const [bridgedata, setBridgedata] = useState([]);
   const [selectedMarker, setSelectedMarker] = useState(null);
 
@@ -35,6 +36,8 @@ export default function Home() {
     setSelectedMarker(item);
   };
 
+  const handleDeleteButtonClick = () => {};
+
   return (
     <>
       <div style={{ textAlign: 'center' }}>
@@ -47,7 +50,7 @@ export default function Home() {
         <ResetButton />
         <YearButtons handleYearButtonClick={handleRankButtonClick} />
         <div style={{ marginTop: '20px' }}>
-          <ConsoleWindow data={selectedMarker} />
+          <ConsoleWindow data={selectedMarker} onDelete={handleDeleteButtonClick} onEdit={() => setIsEditModaiOpen(true)}/>
         </div>
         <MapConponent data={bridgedata} onMarkerClick={handleMarkerClick} />
       </div>
@@ -59,6 +62,16 @@ export default function Home() {
         onAddItem={() => {}}
         onCancel={() => setIsAddModaiOpen(false)}
         onConfirm={() => setIsAddModaiOpen(false)}
+        onChangeValue={() => {}}
+      />
+      <Modal
+        isOpen={isEditModaiOpen}
+        title="橋梁情報修正"
+        data={[]}
+        onClose={() => setIsEditModaiOpen(false)}
+        onAddItem={() => {}}
+        onCancel={() => setIsEditModaiOpen(false)}
+        onConfirm={() => setIsEditModaiOpen(false)}
         onChangeValue={() => {}}
       />
     </>
