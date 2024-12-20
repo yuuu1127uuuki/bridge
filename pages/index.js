@@ -37,8 +37,8 @@ export default function Home() {
 
   return (
     <>
-      <div style={{ textAlign: 'center' }}>
-        <h1 style={{ fontSize: '3em' }}>橋梁情報管理システム</h1>
+      <div style={{ textAlign: 'center', backgroundColor: '#fdffe7' }}>
+        <h1 style={{ fontSize: '3em', color: '#8c7676', marginTop: '0px' }}>橋梁情報管理システム</h1>
         <Button
           onClick={() => setIsAddModaiOpen(true)}
           text="追加"
@@ -59,10 +59,10 @@ export default function Home() {
         title="新しい橋を追加"
         data={[]}
         onClose={() => setIsAddModaiOpen(false)}
-        onAddItem={() => {}}
+        onAddItem={() => { }}
         onCancel={() => setIsAddModaiOpen(false)}
         onConfirm={() => setIsAddModaiOpen(false)}
-        onChangeValue={() => {}}
+        onChangeValue={() => { }}
       />
     </>
   );
