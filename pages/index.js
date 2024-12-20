@@ -7,6 +7,7 @@ import MapConponent from '../components/Atoms/MapComponent';
 import Button from '../components/Atoms/Button';
 import Modal from '../components/Organisms/Modal';
 import axios from 'axios';
+import RankButtons from '../components/Organisms/RankButtons';
 
 axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
 
@@ -46,30 +47,7 @@ export default function Home() {
         />
         <SearchBox onSearch={(query) => console.log(query)} />
         <div style={{ textAlign: 'right', marginTop: '20px' }}>
-          <FilterButton
-            column="Rank"
-            value="Ⅰ"
-            onResults={handleRankButtonClick}
-            text="Ⅰ"
-          />
-          <FilterButton
-            column="Rank"
-            value="Ⅱ"
-            onResults={handleRankButtonClick}
-            text="Ⅱ"
-          />
-          <FilterButton
-            column="Rank"
-            value="Ⅲ"
-            onResults={handleRankButtonClick}
-            text="Ⅲ"
-          />
-          <FilterButton
-            column="Rank"
-            value="Ⅳ"
-            onResults={handleRankButtonClick}
-            text="Ⅳ"
-          />
+          <RankButtons handleRankButtonClick={handleRankButtonClick} />
         </div>
         <ResetButton />
         <FilterButton
