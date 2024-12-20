@@ -31,7 +31,7 @@ const Modal = ({
         style={{
           position: 'relative',
           backgroundColor: '#fff',
-          width: '400px',
+          width: '600px',
           padding: '40px',
           borderRadius: '4px',
         }}
@@ -41,14 +41,30 @@ const Modal = ({
           {title}
         </h2>
 
-        {/* InputFieldコンポーネント(要素数ぶん表示) */}
+        {/* 閉じるボタン(右上に配置) */}
+        <button
+          onClick={onClose}
+          style={{
+            position: 'absolute',
+            top: '10px',
+            right: '10px',
+            background: 'none',
+            border: 'none',
+            fontSize: '16px',
+            cursor: 'pointer',
+          }}
+        >
+          ✕
+        </button>
+
+        {/* 各フィールドの表示 */}
         <div style={{ marginTop: '50px' }}>
-          {data.map((item, index) => (
+          {Object.entries(data).map(([key, value], index) => (
             <div key={index} style={{ marginBottom: '16px' }}>
               <InputField
-                label={`入力項目${index + 1}`}
-                value={item}
-                onChange={(e) => onChangeValue(e.target.value, index)}
+                label={key}
+                value={value}
+                onChange={(e) => onChangeValue(key, e.target.value)}
               />
             </div>
           ))}
