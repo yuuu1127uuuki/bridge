@@ -1,7 +1,12 @@
 import React from 'react';
-import { APIProvider, Map, Marker, InfoWindow } from '@vis.gl/react-google-maps';
+import {
+  APIProvider,
+  Map,
+  Marker,
+  InfoWindow,
+} from '@vis.gl/react-google-maps';
 
-const MapConponent = ({ data, onMarkerClick, }) => {
+const MapConponent = ({ data, onMarkerClick }) => {
   const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
   const [selected, setSelected] = React.useState(null);
 
@@ -21,7 +26,9 @@ const MapConponent = ({ data, onMarkerClick, }) => {
         disableDefaultUI={true}
       >
         {data.map((item) => {
-          const [lat, lng] = item.Id.split(',').map((coord) => parseFloat(coord.trim()));
+          const [lat, lng] = item.Id.split(',').map((coord) =>
+            parseFloat(coord.trim())
+          );
           return (
             <Marker
               key={item._id}
