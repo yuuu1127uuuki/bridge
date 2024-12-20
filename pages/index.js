@@ -39,10 +39,7 @@ export default function Home() {
     <>
       <div style={{ textAlign: 'center' }}>
         <h1 style={{ fontSize: '3em' }}>橋梁情報管理システム</h1>
-        <Button
-          onClick={() => setIsAddModaiOpen(true)}
-          text="追加"
-        />
+        <Button onClick={() => setIsAddModaiOpen(true)} text="追加" />
         <SearchBox onSearch={(query) => console.log(query)} />
         <div style={{ textAlign: 'right', marginTop: '20px' }}>
           <RankButtons handleRankButtonClick={handleRankButtonClick} />

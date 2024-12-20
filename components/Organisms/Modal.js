@@ -9,7 +9,7 @@ const Modal = ({
   onAddItem,
   onCancel,
   onConfirm,
-  onChangeValue
+  onChangeValue,
 }) => {
   if (!isOpen) return null;
 
@@ -24,7 +24,7 @@ const Modal = ({
         backgroundColor: 'rgba(0,0,0,0.3)',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
       }}
     >
       <div
@@ -33,7 +33,7 @@ const Modal = ({
           backgroundColor: '#fff',
           width: '400px',
           padding: '40px',
-          borderRadius: '4px'
+          borderRadius: '4px',
         }}
       >
         {/* タイトル(左上に配置) */}
