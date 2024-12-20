@@ -41,7 +41,11 @@ export default function Home() {
   };
 
   const handleRankButtonClick = (onResults) => {
-    console.log(onResults);
+    const filtered = onResults;
+    setFilteredData(filtered);
+    if (filtered.length === 0) {
+      alert('該当するデータがありません');
+    }
   };
 
   const handleMarkerClick = (item) => {
