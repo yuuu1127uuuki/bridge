@@ -2,30 +2,32 @@ import React from 'react';
 import Button from './Button';
 
 const ConsoleWindow = ({ data, onEdit, onDelete }) => {
+  const cellStyle = { backgroundColor: '#99f0ca' };
+
   return (
     <table border="1" style={{ width: '100%', textAlign: 'center', tableLayout: 'fixed' }}>
       <thead>
         <tr>
-          <th>ID</th>
-          <th>名前</th>
-          <th>緯度経度</th>
-          <th>操作</th>
+          <th style={cellStyle}>ID</th>
+          <th style={cellStyle}>名前</th>
+          <th style={cellStyle}>緯度経度</th>
+          <th style={cellStyle}>操作</th>
         </tr>
       </thead>
       <tbody>
         {data ? (
           <tr>
-            <td>{data._id}</td>
-            <td>{data.Name}</td>
-            <td>{data.Id}</td>
-            <td>
+            <td style={cellStyle}>{data._id}</td>
+            <td style={cellStyle}>{data.Name}</td>
+            <td style={cellStyle}>{data.Id}</td>
+            <td style={cellStyle}>
               <Button text="編集" onClick={onEdit} />
               <Button text="削除" onClick={onDelete} />
             </td>
           </tr>
         ) : (
           <tr>
-            <td colSpan="4" style={{ textAlign: 'center' }}>
+            <td colSpan="4" style={{ ...cellStyle, textAlign: 'center' }}>
               データが選択されていません
             </td>
           </tr>

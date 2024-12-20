@@ -27,7 +27,15 @@ const SearchBox = ({ onSearch }) => {
         onKeyDown={handleKeyDown}
         style={{ marginRight: '10px', width: '300px', height: '30px' }}
       />
-      <button onClick={handleSearch} style={{ height: '36px' }}>
+      <button
+        onClick={handleSearch}
+        style={{
+          height: '36px',
+          backgroundColor: '#c9fdd7',
+          color: '#8c7676',
+          outline: '#99f0ca',
+        }}
+      >
         検索
       </button>
     </div>
