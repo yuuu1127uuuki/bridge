@@ -1,5 +1,6 @@
 import React from 'react';
 import FilterButton from '../Molecules/FilterButton';
+import PastButton from '../Molecules/PastButton';
 
 const currentYear = new Date().getFullYear();
 
@@ -36,7 +37,11 @@ const YearButtons = ({ handleYearButtonClick }) => {
         onResults={handleYearButtonClick}
         text="5"
       />
-      {/* <FilterButton column="Date" value={!((currentYear - 1) && (currentYear -2) && (currentYear-3) && (currentYear-4) && (currentYear-5))} onResults={handleRankButtonClick} text="6年以上" /> */}
+      <PastButton
+        value={currentYear - 6}
+        onResults={handleYearButtonClick}
+        text="6年以上"
+      />
     </div>
   );
 };
