@@ -15,6 +15,7 @@ export default function Home() {
   const [isAddModaiOpen, setIsAddModaiOpen] = React.useState(false);
   const [isEditModaiOpen, setIsEditModaiOpen] = React.useState(false);
   const [bridgedata, setBridgedata] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [selectedMarker, setSelectedMarker] = useState(null);
 
   useEffect(() => {
@@ -22,11 +23,22 @@ export default function Home() {
       .get('/getopendata')
       .then((response) => {
         setBridgedata(response.data);
+        setFilteredData(response.data);
       })
       .catch((error) => {
         console.error('データの取得に失敗しました', error);
       });
   }, []);
+
+  const handleSearch = (query) => {
+    const filtered = bridgedata.filter((item) =>
+      item.Name.includes(query)
+    );
+    setFilteredData(filtered);
+    if (filtered.length === 0) {
+      alert('該当するデータがありません');
+    }
+  };
 
   const handleRankButtonClick = (onResults) => {
     console.log(onResults);
@@ -43,7 +55,7 @@ export default function Home() {
       <div style={{ textAlign: 'center' }}>
         <h1 style={{ fontSize: '3em' }}>橋梁情報管理システム</h1>
         <Button onClick={() => setIsAddModaiOpen(true)} text="追加" />
-        <SearchBox onSearch={(query) => console.log(query)} />
+        <SearchBox onSearch={handleSearch} />
         <div style={{ textAlign: 'right', marginTop: '20px' }}>
           <RankButtons handleRankButtonClick={handleRankButtonClick} />
         </div>
@@ -52,7 +64,7 @@ export default function Home() {
         <div style={{ marginTop: '20px' }}>
           <ConsoleWindow data={selectedMarker} onDelete={handleDeleteButtonClick} onEdit={() => setIsEditModaiOpen(true)}/>
         </div>
-        <MapConponent data={bridgedata} onMarkerClick={handleMarkerClick} />
+        <MapConponent data={filteredData} onMarkerClick={handleMarkerClick} />
       </div>
       <Modal
         isOpen={isAddModaiOpen}
