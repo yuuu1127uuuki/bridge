@@ -110,7 +110,7 @@ export default function About() {
         <div style={{ padding: '16px' }}>
           <h1>ConsoleWindow Example</h1>
           <InfoWindow
-            data={{ _id: '123456-78-90', name: '橋梁名', Id: '37,135' }}
+            data={{ _id: '123456-78-90', Name: '橋梁名', Id: '37,135' }}
           />
         </div>
         <div style={{ padding: '16px' }}>
