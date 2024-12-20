@@ -5,7 +5,10 @@ const ConsoleWindow = ({ data, onEdit, onDelete }) => {
   const cellStyle = { backgroundColor: '#99f0ca' };
 
   return (
-    <table border="1" style={{ width: '100%', textAlign: 'center', tableLayout: 'fixed' }}>
+    <table
+      border="1"
+      style={{ width: '100%', textAlign: 'center', tableLayout: 'fixed' }}
+    >
       <thead>
         <tr>
           <th style={cellStyle}>ID</th>

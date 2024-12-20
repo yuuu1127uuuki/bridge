@@ -16,9 +16,8 @@ const PastButton = ({ value, onResults, text }) => {
         try {
           // データベースから一致するレコードを取得
           const filteredBridges = res.filter((item) => {
-              return item.Date <= value;
-            }
-          );
+            return item.Date <= value;
+          });
           onResults(filteredBridges);
         } catch (error) {
           console.error('データの取得に失敗しました', error);
