@@ -5,6 +5,7 @@ import ResetButton from '../components/Molecules/ResetButton';
 import { useState, useEffect } from 'react';
 import InfoWindow from '../components/Atoms/ConsoleWindow';
 import MapConponent from '../components/Atoms/MapComponent';
+import InputField from '../components/Atoms/InputField';
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
@@ -54,6 +55,15 @@ export default function About() {
           {/* Button コンポーネントを追加 */}
           <h1>Button Example</h1>
           <Button onClick={handleButtonClick} text="ボタン"></Button>
+        </div>
+        <div style={{ padding: '16px' }}>
+          <h1>InputField Example</h1>
+          <InputField
+            title={'ID'}
+            label="ここに入力"
+            value=""
+            onChange={(e) => console.log(e.target.value)}
+          />
         </div>
         <div style={{ padding: '16px' }}>
           {/* FilterButton コンポーネントを追加 */}
