@@ -7,12 +7,16 @@ import InfoWindow from '../components/Atoms/ConsoleWindow';
 import MapConponent from '../components/Atoms/MapComponent';
 import InputField from '../components/Atoms/InputField';
 import axios from 'axios';
+import React from 'react';
+import Modal from '../components/Organisms/Modal';
 
 axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
 
 export default function About() {
   const [searchResult, setSearchResult] = useState('');
   const [bridgedata, setBridgedata] = useState([]);
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [modalData, setModalData] = React.useState(['初期項目1', '初期項目2']);
 
   useEffect(() => {
     axios
@@ -37,6 +41,29 @@ export default function About() {
 
   const handleFilterResults = (results) => {
     console.log(results);
+  };
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+  const handleAddItem = () => {
+    setModalData([...modalData, `追加項目${modalData.length + 1}`]);
+  };
+
+  const handleChangeValue = (value, index) => {
+    const newData = [...modalData];
+    newData[index] = value;
+    setModalData(newData);
+  };
+
+  const handleCancel = () => {
+    // キャンセル処理
+    closeModal();
+  };
+
+  const handleConfirm = () => {
+    // 確認処理
+    closeModal();
   };
 
   // components 内のコンポーネントを表示する
@@ -89,6 +116,20 @@ export default function About() {
         <div style={{ padding: '16px' }}>
           <h1>Map Example</h1>
           <MapConponent data={bridgedata} />
+        </div>
+        <div style={{ padding: '16px' }}>
+          <h1>Modal Example</h1>
+          <button onClick={openModal}>Open Modal</button>
+          <Modal
+            isOpen={isModalOpen}
+            title="モーダルタイトル"
+            data={modalData}
+            onClose={closeModal}
+            onAddItem={handleAddItem}
+            onCancel={handleCancel}
+            onConfirm={handleConfirm}
+            onChangeValue={handleChangeValue}
+          />
         </div>
       </div>
     </div>
