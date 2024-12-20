@@ -16,7 +16,7 @@ const ConsoleWindow = ({ data, onEdit, onDelete }) => {
         {data ? (
           <tr>
             <td>{data._id}</td>
-            <td>{data.name}</td>
+            <td>{data.Name}</td>
             <td>{data.Id}</td>
             <td>
               <Button text="編集" onClick={onEdit} />
