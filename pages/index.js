@@ -16,6 +16,7 @@ export default function Home() {
   const [filteredData, setFilteredData] = useState([]);
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   useEffect(() => {
     axios
@@ -53,11 +54,14 @@ export default function Home() {
     const isConfirmed = window.confirm('本当に削除しますか？');
     if (!isConfirmed) return;
 
-    console.log("ニフラム");
+    console.log('ニフラム');
     try {
-      const response = await axios.delete(`/deleteopendata/${selectedMarker._id}`, {
-        method: 'DELETE',
-      });
+      const response = await axios.delete(
+        `/deleteopendata/${selectedMarker._id}`,
+        {
+          method: 'DELETE',
+        }
+      );
       alert('削除に成功しました');
     } catch (error) {
       console.error(error);
@@ -82,7 +86,7 @@ export default function Home() {
           <ConsoleWindow
             data={selectedMarker}
             onDelete={handleDeleteButtonClick}
-            onEdit={() => setIsEditModaiOpen(true)}
+            onEdit={() => setIsEditModalOpen(true)}
           />
         </div>
         <MapConponent data={filteredData} onMarkerClick={handleMarkerClick} />

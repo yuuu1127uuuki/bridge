@@ -92,18 +92,18 @@ export default function About() {
           <MapConponent data={bridgedata} />
         </div>
         <div style={{ padding: '16px' }}>
-        <h1>Modal Example</h1>
-        <button onClick={() => setIsModalOpen(true)}>Open Modal</button>
-        <Modal
-          isOpen={isModalOpen}
-          title="モーダルタイトル"
-          onClose={() => setIsModalOpen(false)}
-          onCancel={() => setIsModalOpen(false)}
-          onConfirm={() => setIsModalOpen(false)}
-        >
-          <p>モーダルの中身です。</p>
-        </Modal>
-      </div>
+          <h1>Modal Example</h1>
+          <button onClick={() => setIsModalOpen(true)}>Open Modal</button>
+          <Modal
+            isOpen={isModalOpen}
+            title="モーダルタイトル"
+            onClose={() => setIsModalOpen(false)}
+            onCancel={() => setIsModalOpen(false)}
+            onConfirm={() => setIsModalOpen(false)}
+          >
+            <p>モーダルの中身です。</p>
+          </Modal>
+        </div>
       </div>
     </div>
   );

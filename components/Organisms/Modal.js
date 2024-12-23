@@ -14,7 +14,7 @@ const Modal = ({ isOpen, title, children, onClose, onCancel, onConfirm }) => {
         backgroundColor: 'rgba(0,0,0,0.3)',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
       }}
     >
       <div
@@ -23,7 +23,7 @@ const Modal = ({ isOpen, title, children, onClose, onCancel, onConfirm }) => {
           backgroundColor: '#fff',
           width: '400px',
           padding: '20px',
-          borderRadius: '4px'
+          borderRadius: '4px',
         }}
       >
         {/* タイトル(左上に配置) */}
@@ -39,7 +39,7 @@ const Modal = ({ isOpen, title, children, onClose, onCancel, onConfirm }) => {
             background: 'none',
             border: 'none',
             fontSize: '16px',
-            cursor: 'pointer'
+            cursor: 'pointer',
           }}
         >
           ✕
@@ -53,7 +53,7 @@ const Modal = ({ isOpen, title, children, onClose, onCancel, onConfirm }) => {
           style={{
             display: 'flex',
             justifyContent: 'flex-end',
-            marginTop: '20px'
+            marginTop: '20px',
           }}
         >
           <button onClick={onCancel} style={{ marginRight: '8px' }}>
