@@ -75,8 +75,8 @@ const AddModal = ({ isOpen, onClose, onCancel, onConfirm }) => {
         <InputField
           title="名前"
           label="ここに入力"
-          value={formData.name}
-          onChange={(e) => handleInputChange('name', e.target.value)}
+          value={formData.Name}
+          onChange={(e) => handleInputChange('Name', e.target.value)}
         />
         <InputField
           title="ﾅﾏｴ"

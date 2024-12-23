@@ -70,14 +70,27 @@ export default function Home() {
     }
   };
 
+  const handleAddConfilmButtonClick = async (data) => {
+    const isConfirmed = window.confirm('本当に追加しますか？');
+    if (!isConfirmed) return;
+    console.log('なかまをよぶ');
+    try {
+      const response = await axios.post('/postopendata', data);
+      alert('追加に成功しました');
+      console.log(data); // 送信するデータを確認
+    } catch (error) {
+      console.error(error);
+      alert('追加中にエラーが発生しました');
+    }
+  };
   const handleEditButtonClick = async (data) => {
     try {
       const response = await axios.put(
-        `/putopendata/${selectedMarker._id}`, 
+        `/putopendata/${selectedMarker._id}`,
         data
       );
       alert('更新に成功しました');
-      console.log(data); 
+      console.log(data);
       console.log(response);
     } catch (error) {
       console.error(error);
@@ -110,7 +123,7 @@ export default function Home() {
           isOpen={isAddModalOpen}
           onClose={() => setIsAddModalOpen(false)}
           onCancel={() => setIsAddModalOpen(false)}
-          onConfirm={(data) => console.log(data)}
+          onConfirm={(data) => handleAddConfilmButtonClick(data)}
         />
         <EditModal
           isOpen={isEditModalOpen}
