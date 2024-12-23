@@ -1,12 +1,16 @@
 import React from 'react';
-import styles from'../../styles/InputField.module.css';
+import styles from '../../styles/InputField.module.css';
 
 const InputField = ({ title, label, value, onChange }) => {
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-      <div style={{ textAlign: 'left', marginRight: '8px' }}>
-        {title}:
-      </div>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      }}
+    >
+      <div style={{ textAlign: 'left', marginRight: '8px' }}>{title}:</div>
       <input
         type="text"
         placeholder={label}

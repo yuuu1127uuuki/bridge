@@ -22,11 +22,6 @@ const AddModal = ({ isOpen, onClose, onCancel, onConfirm }) => {
     Rank: '',
     Schedule: '',
     New: '',
-    Ho1: '',
-    Ho2: '',
-    Ho3: '',
-    Ho4: '',
-    Ho5: '',
     Record: '',
     Co: '',
   });
@@ -125,24 +120,54 @@ const AddModal = ({ isOpen, onClose, onCancel, onConfirm }) => {
           value={formData.width}
           onChange={(e) => handleInputChange('width', e.target.value)}
         />
-        <InputField
-          title="使用用途"
-          label="ここに入力"
-          value={formData.HowUse}
-          onChange={(e) => handleInputChange('HowUse', e.target.value)}
-        />
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <div style={{ textAlign: 'left', marginRight: '8px' }}>使用用途:</div>
+          <select
+            style={{ width: '62%', textAlign: 'left' }}
+            value={formData.HowUse}
+            onChange={(e) => handleInputChange('HowUse', e.target.value)}
+          >
+            <option value="" disabled>選択してください</option>
+            <option value="長大橋">長大橋</option>
+            <option value="特殊橋">特殊橋</option>
+            <option value="重要物流道路">重要物流道路</option>
+            <option value="緊急輸送道路">緊急輸送道路</option>
+            <option value="跨線橋">跨線橋</option>
+            <option value="跨道橋">跨道橋</option>
+            <option value="その他">その他</option>
+          </select>
+        </div>
         <InputField
           title="点検年度"
           label="例: 2023"
           value={formData.Date}
           onChange={(e) => handleInputChange('Date', e.target.value)}
         />
-        <InputField
-          title="健全度"
-          label="ここに入力"
-          value={formData.Rank}
-          onChange={(e) => handleInputChange('Rank', e.target.value)}
-        />
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <div style={{ textAlign: 'left', marginRight: '8px' }}>健全度:</div>
+          <select
+            style={{ width: '62%', textAlign: 'left' }}
+            value={formData.Rank}
+            onChange={(e) => handleInputChange('Rank', e.target.value)}
+          >
+            <option value="" disabled>選択してください</option>
+            <option value="Ⅰ">Ⅰ</option>
+            <option value="Ⅱ">Ⅱ</option>
+            <option value="Ⅲ">Ⅲ</option>
+          </select>
+        </div>
         <InputField
           title="次回点検年度"
           label="ここに入力"
