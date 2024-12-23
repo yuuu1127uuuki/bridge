@@ -7,6 +7,7 @@ import Button from '../components/Atoms/Button';
 import axios from 'axios';
 import RankButtons from '../components/Organisms/RankButtons';
 import YearButtons from '../components/Organisms/YeraButtons';
+import AddModal from '../components/Templates/AddModal';
 
 axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
 
@@ -14,6 +15,7 @@ export default function Home() {
   const [bridgedata, setBridgedata] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [selectedMarker, setSelectedMarker] = useState(null);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   useEffect(() => {
     axios
@@ -55,7 +57,7 @@ export default function Home() {
         <h1 style={{ fontSize: '3em', color: '#8c7676', marginTop: '0px' }}>
           橋梁情報管理システム
         </h1>
-        <Button onClick={() => setIsAddModaiOpen(true)} text="追加" />
+        <Button onClick={() => setIsAddModalOpen(true)} text="追加" />
         <SearchBox onSearch={handleSearch} />
         <div style={{ textAlign: 'right', marginTop: '20px' }}>
           <RankButtons handleRankButtonClick={handleRankButtonClick} />
@@ -70,6 +72,12 @@ export default function Home() {
           />
         </div>
         <MapConponent data={filteredData} onMarkerClick={handleMarkerClick} />
+        <AddModal
+          isOpen={isAddModalOpen}
+          onClose={() => setIsAddModalOpen(false)}
+          onCancel={() => setIsAddModalOpen(false)}
+          onConfirm={(data) => console.log(data)}
+        />
       </div>
     </>
   );

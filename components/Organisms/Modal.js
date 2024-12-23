@@ -1,16 +1,6 @@
 import React from 'react';
-import InputField from '../Atoms/InputField';
 
-const Modal = ({
-  isOpen,
-  title,
-  data,
-  onClose,
-  onAddItem,
-  onCancel,
-  onConfirm,
-  onChangeValue,
-}) => {
+const Modal = ({ isOpen, title, children, onClose, onCancel, onConfirm }) => {
   if (!isOpen) return null;
 
   return (
@@ -24,24 +14,22 @@ const Modal = ({
         backgroundColor: 'rgba(0,0,0,0.3)',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center'
       }}
     >
       <div
         style={{
           position: 'relative',
           backgroundColor: '#fff',
-          width: '600px',
-          padding: '40px',
-          borderRadius: '4px',
+          width: '400px',
+          padding: '20px',
+          borderRadius: '4px'
         }}
       >
         {/* タイトル(左上に配置) */}
-        <h2 style={{ position: 'absolute', top: '10px', left: '10px' }}>
-          {title}
-        </h2>
+        <h2 style={{ margin: 0 }}>{title}</h2>
 
-        {/* 閉じるボタン(右上に配置) */}
+        {/* 右上にモーダルを閉じるボタン */}
         <button
           onClick={onClose}
           style={{
@@ -51,32 +39,23 @@ const Modal = ({
             background: 'none',
             border: 'none',
             fontSize: '16px',
-            cursor: 'pointer',
+            cursor: 'pointer'
           }}
         >
           ✕
         </button>
 
-        {/* 各フィールドの表示 */}
-        <div style={{ marginTop: '50px' }}>
-          {Object.entries(data).map(([key, value], index) => (
-            <div key={index} style={{ marginBottom: '16px' }}>
-              <InputField
-                label={key}
-                value={value}
-                onChange={(e) => onChangeValue(key, e.target.value)}
-              />
-            </div>
-          ))}
-        </div>
+        {/* モーダルの中身 */}
+        <div style={{ marginTop: '20px' }}>{children}</div>
 
-        {/* 左下に「項目追加」ボタン */}
-        <div style={{ position: 'absolute', left: '10px', bottom: '10px' }}>
-          <button onClick={onAddItem}>項目追加</button>
-        </div>
-
-        {/* 右下に「キャンセル」ボタンと「確認」ボタン */}
-        <div style={{ position: 'absolute', right: '10px', bottom: '10px' }}>
+        {/* 一番下にキャンセルボタンと確認ボタン */}
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            marginTop: '20px'
+          }}
+        >
           <button onClick={onCancel} style={{ marginRight: '8px' }}>
             キャンセル
           </button>

@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import InfoWindow from '../components/Atoms/ConsoleWindow';
 import MapConponent from '../components/Atoms/MapComponent';
 import InputField from '../components/Atoms/InputField';
+import Modal from '../components/Organisms/Modal';
 import axios from 'axios';
 import React from 'react';
 
@@ -14,6 +15,7 @@ axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
 export default function About() {
   const [searchResult, setSearchResult] = useState('');
   const [bridgedata, setBridgedata] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     axios
@@ -39,8 +41,6 @@ export default function About() {
   const handleFilterResults = (results) => {
     console.log(results);
   };
-
-  // components 内のコンポーネントを表示する
   return (
     <div>
       <h1>コンポーネント一覧</h1>
@@ -91,6 +91,19 @@ export default function About() {
           <h1>Map Example</h1>
           <MapConponent data={bridgedata} />
         </div>
+        <div style={{ padding: '16px' }}>
+        <h1>Modal Example</h1>
+        <button onClick={() => setIsModalOpen(true)}>Open Modal</button>
+        <Modal
+          isOpen={isModalOpen}
+          title="モーダルタイトル"
+          onClose={() => setIsModalOpen(false)}
+          onCancel={() => setIsModalOpen(false)}
+          onConfirm={() => setIsModalOpen(false)}
+        >
+          <p>モーダルの中身です。</p>
+        </Modal>
+      </div>
       </div>
     </div>
   );
