@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from '../Organisms/Modal';
 import InputField from '../Atoms/InputField';
 
-const AddModal = ({ isOpen, onClose, onCancel, onConfirm }) => {
+const EditModal = ({ isOpen, onClose, onCancel, onConfirm, editData }) => {
   const [formData, setFormData] = useState({
     _id: '',
     bridge: '',
@@ -26,6 +26,33 @@ const AddModal = ({ isOpen, onClose, onCancel, onConfirm }) => {
     Co: '',
   });
 
+  useEffect(() => {
+    if (editData) {
+      setFormData({
+        _id: editData._id || '',
+        bridge: editData.bridge || '',
+        Inspector: editData.Inspector || '',
+        Tel: editData.Tel || '',
+        Id: editData.Id || '',
+        Name: editData.Name || '',
+        Kana: editData.Kana || '',
+        Road: editData.Road || '',
+        address: editData.address || '',
+        Keisiki: editData.Keisiki || '',
+        birth: editData.birth || '',
+        length: editData.length || '',
+        width: editData.width || '',
+        HowUse: editData.HowUse || '',
+        Date: editData.Date || '',
+        Rank: editData.Rank || '',
+        Schedule: editData.Schedule || '',
+        New: editData.New || '',
+        Record: editData.Record || '',
+        Co: editData.Co || '',
+      });
+    }
+  }, [editData]);
+
   const handleInputChange = (field, value) => {
     setFormData({
       ...formData,
@@ -36,7 +63,7 @@ const AddModal = ({ isOpen, onClose, onCancel, onConfirm }) => {
   return (
     <Modal
       isOpen={isOpen}
-      title="新しい橋を追加"
+      title="橋梁情報修正"
       onClose={onClose}
       onCancel={onCancel}
       onConfirm={() => onConfirm(formData)}
@@ -75,8 +102,8 @@ const AddModal = ({ isOpen, onClose, onCancel, onConfirm }) => {
         <InputField
           title="名前"
           label="ここに入力"
-          value={formData.name}
-          onChange={(e) => handleInputChange('name', e.target.value)}
+          value={formData.Name}
+          onChange={(e) => handleInputChange('Name', e.target.value)}
         />
         <InputField
           title="ﾅﾏｴ"
@@ -112,13 +139,15 @@ const AddModal = ({ isOpen, onClose, onCancel, onConfirm }) => {
           title="橋の長さ"
           label="ここに入力"
           value={formData.length}
-          onChange={(e) => handleInputChange('length', e.target.value)}
+          onChange={(e) => handleInputChange('length', parceInt(e.target.value)) || ''} 
+          type="number"
         />
         <InputField
           title="橋の幅"
           label="ここに入力"
           value={formData.width}
-          onChange={(e) => handleInputChange('width', e.target.value)}
+          onChange={(e) => handleInputChange('width', parseInt(e.target.value))  || ''}
+          type="number"
         />
         <div
           style={{
@@ -149,7 +178,8 @@ const AddModal = ({ isOpen, onClose, onCancel, onConfirm }) => {
           title="点検年度"
           label="例: 2023"
           value={formData.Date}
-          onChange={(e) => handleInputChange('Date', e.target.value)}
+          onChange={(e) => handleInputChange('Date', parseInt(e.target.value) || '')}
+          type="number"
         />
         <div
           style={{
@@ -201,4 +231,4 @@ const AddModal = ({ isOpen, onClose, onCancel, onConfirm }) => {
   );
 };
 
-export default AddModal;
+export default EditModal;

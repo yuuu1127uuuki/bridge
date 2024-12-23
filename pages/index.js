@@ -8,6 +8,7 @@ import axios from 'axios';
 import RankButtons from '../components/Organisms/RankButtons';
 import YearButtons from '../components/Organisms/YeraButtons';
 import AddModal from '../components/Templates/AddModal';
+import EditModal from '../components/Templates/EditModal';
 
 axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
 
@@ -69,6 +70,21 @@ export default function Home() {
     }
   };
 
+  const handleEditButtonClick = async (data) => {
+    try {
+      const response = await axios.put(
+        `/putopendata/${selectedMarker._id}`, 
+        data
+      );
+      alert('更新に成功しました');
+      console.log(data); 
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+      alert('更新中にエラーが発生しました');
+    }
+  }
+
   return (
     <>
       <div style={{ textAlign: 'center', backgroundColor: '#fdffe7' }}>
@@ -95,6 +111,13 @@ export default function Home() {
           onClose={() => setIsAddModalOpen(false)}
           onCancel={() => setIsAddModalOpen(false)}
           onConfirm={(data) => console.log(data)}
+        />
+        <EditModal
+          isOpen={isEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)}
+          onCancel={() => setIsEditModalOpen(false)}
+          onConfirm={(data) => handleEditButtonClick(data)}
+          editData={selectedMarker}
         />
       </div>
     </>
