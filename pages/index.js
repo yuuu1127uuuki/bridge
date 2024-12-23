@@ -50,7 +50,21 @@ export default function Home() {
     setSelectedMarker(item);
   };
 
-  const handleDeleteButtonClick = () => {};
+  const handleDeleteButtonClick = async () => {
+    const isConfirmed = window.confirm('本当に削除しますか？');
+    if (!isConfirmed) return;
+
+    console.log("ニフラム");
+    try {
+      const response = await axios.delete(`/deleteopendata/${selectedMarker._id}`, {
+        method: 'DELETE',
+      });
+      alert('削除に成功しました');
+    } catch (error) {
+      console.error(error);
+      alert('削除中にエラーが発生しました');
+    }
+  };
 
   return (
     <>
@@ -79,20 +93,20 @@ export default function Home() {
         title="新しい橋を追加"
         data={[]}
         onClose={() => setIsAddModaiOpen(false)}
-        onAddItem={() => {}}
+        onAddItem={() => { }}
         onCancel={() => setIsAddModaiOpen(false)}
         onConfirm={() => setIsAddModaiOpen(false)}
-        onChangeValue={() => {}}
+        onChangeValue={() => { }}
       />
       <Modal
         isOpen={isEditModaiOpen}
         title="橋梁情報修正"
         data={[]}
         onClose={() => setIsEditModaiOpen(false)}
-        onAddItem={() => {}}
+        onAddItem={() => { }}
         onCancel={() => setIsEditModaiOpen(false)}
         onConfirm={() => setIsEditModaiOpen(false)}
-        onChangeValue={() => {}}
+        onChangeValue={() => { }}
       />
     </>
   );
