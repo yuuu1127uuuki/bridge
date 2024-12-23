@@ -24,7 +24,7 @@ const AddModal = ({ isOpen, onClose, onCancel, onConfirm }) => {
     New: '',
     Ho1: '',
     Ho2: '',
-    Ho3: '', 
+    Ho3: '',
     Ho4: '',
     Ho5: '',
     Record: '',
@@ -34,7 +34,7 @@ const AddModal = ({ isOpen, onClose, onCancel, onConfirm }) => {
   const handleInputChange = (field, value) => {
     setFormData({
       ...formData,
-      [field]: value
+      [field]: value,
     });
   };
 
@@ -87,7 +87,7 @@ const AddModal = ({ isOpen, onClose, onCancel, onConfirm }) => {
           title="ﾅﾏｴ"
           label="ここに入力"
           value={formData.Kana}
-          onChange={(e) => handleInputChange('Kana', e.target.value)} 
+          onChange={(e) => handleInputChange('Kana', e.target.value)}
         />
         <InputField
           title="道路"
@@ -153,7 +153,7 @@ const AddModal = ({ isOpen, onClose, onCancel, onConfirm }) => {
           title="最新補修年度"
           label="ここに入力"
           value={formData.New}
-          onChange={(e) => handleInputChange('New', e.target.value)} 
+          onChange={(e) => handleInputChange('New', e.target.value)}
         />
         <InputField
           title="橋梁管理カルテ"
