@@ -2,6 +2,7 @@ import SearchBox from '../components/Atoms/SearchBox';
 import Button from '../components/Atoms/Button';
 import FilterButton from '../components/Molecules/FilterButton';
 import ResetButton from '../components/Molecules/ResetButton';
+import LogoutButton from '../components/Molecules/LogoutButton';
 import { useState, useEffect } from 'react';
 import InfoWindow from '../components/Atoms/ConsoleWindow';
 import MapConponent from '../components/Atoms/MapComponent';
@@ -80,6 +81,11 @@ export default function About() {
           {/* ResetButton コンポーネントを追加 */}
           <h1>Reset Button Example</h1>
           <ResetButton />
+        </div>
+        <div style={{ padding: '16px' }}>
+          {/* LogoutButton コンポーネントを追加 */}
+          <h1>Logout Button Example</h1>
+          <LogoutButton />
         </div>
         <div style={{ padding: '16px' }}>
           <h1>ConsoleWindow Example</h1>
