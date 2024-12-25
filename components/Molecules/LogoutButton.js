@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 function LogoutButton() {
     const router = useRouter();
     const handleClick = () => {
-        router.push('/login');
+        router.push('/');
     };
     return <Button onClick={handleClick} text="ログアウト" />;
 
