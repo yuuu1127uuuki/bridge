@@ -7,7 +7,7 @@ import MapConponent from '../components/Atoms/MapComponent';
 import Button from '../components/Atoms/Button';
 import axios from 'axios';
 import RankButtons from '../components/Organisms/RankButtons';
-import YearButtons from '../components/Organisms/YeraButtons';
+import YearButtons from '../components/Organisms/YearButtons';
 import AddModal from '../components/Templates/AddModal';
 import EditModal from '../components/Templates/EditModal';
 
