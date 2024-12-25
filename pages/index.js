@@ -21,31 +21,29 @@ const LoginPage = () => {
   return (
         <div style={styles.container}>
             <h1 style={styles.title}>橋梁情報管理システム</h1>
-            <form onSubmit={handleLogin} style={styles.form}>
-                <div style={styles.inputGroup}>
-                    <label htmlFor="username" style={styles.label}>ユーザー名:</label>
-          </label>
-          <input
-            type="text"
-                        id="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        style={styles.input}
-                    />
-                </div>
-                <div style={styles.inputGroup}>
-                    <label htmlFor="password" style={styles.label}>パスワード:</label>
-          </label>
-          <input
-            type="password"
-                        id="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        style={styles.input}
-          />
-        </div>
-                <button type="submit" style={styles.button}>ログイン</button>
-            </form>
+        <form onSubmit={handleLogin} style={styles.form}>
+            <div style={styles.inputGroup}>
+                <label htmlFor="username" style={styles.label}>ユーザー名:</label>
+                <input
+                    type="text"
+                    id="username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    style={styles.input}
+                />
+            </div>
+            <div style={styles.inputGroup}>
+                <label htmlFor="password" style={styles.label}>パスワード:</label>
+                <input
+                    type="password"
+                    id="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    style={styles.input}
+                />
+            </div>
+            <button type="submit" style={styles.button}>ログイン</button>
+        </form>
         </div>
     );
 };
