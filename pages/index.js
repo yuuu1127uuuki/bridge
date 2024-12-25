@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 
 const LoginPage = () => {
-    const [username, setUsername] = useState('');
+  const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const router = useRouter();
+  const router = useRouter();
 
-    const handleLogin = (e) => {
+  const handleLogin = (e) => {
         e.preventDefault();
         // 簡単なログイン処理
         if (username === 'admin' && password === 'password') {
@@ -15,17 +15,18 @@ const LoginPage = () => {
         } else {
             // ログイン失敗時の処理
             alert('ユーザー名またはパスワードが違います。');
-        }
-    };
+    }
+  };
 
-    return (
+  return (
         <div style={styles.container}>
             <h1 style={styles.title}>橋梁情報管理システム</h1>
             <form onSubmit={handleLogin} style={styles.form}>
                 <div style={styles.inputGroup}>
                     <label htmlFor="username" style={styles.label}>ユーザー名:</label>
-                    <input
-                        type="text"
+          </label>
+          <input
+            type="text"
                         id="username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
@@ -34,14 +35,15 @@ const LoginPage = () => {
                 </div>
                 <div style={styles.inputGroup}>
                     <label htmlFor="password" style={styles.label}>パスワード:</label>
-                    <input
-                        type="password"
+          </label>
+          <input
+            type="password"
                         id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         style={styles.input}
-                    />
-                </div>
+          />
+        </div>
                 <button type="submit" style={styles.button}>ログイン</button>
             </form>
         </div>
@@ -49,7 +51,7 @@ const LoginPage = () => {
 };
 
 const styles = {
-    container: {
+  container: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -65,15 +67,15 @@ const styles = {
     },
     form: {
         display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+    flexDirection: 'column',
+    alignItems: 'center',
     },
     inputGroup: {
         marginBottom: '15px',
     },
     label: {
-        marginBottom: '5px',
-    },
+    marginBottom: '5px',
+  },
     input: {
         padding: '10px',
         borderRadius: '5px',
@@ -81,8 +83,8 @@ const styles = {
     },
     button: {
         padding: '10px 20px',
-        backgroundColor: '#c9fdd7',
-        color: '#8c7676',
+    backgroundColor: '#c9fdd7',
+    color: '#8c7676',
         border: 'none',
         borderRadius: '5px',
         outline: '1px solid #99f0ca',

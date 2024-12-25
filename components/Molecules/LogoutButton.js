@@ -4,12 +4,11 @@ import { useRouter } from 'next/router';
 
 // ページをリロードするボタン
 function LogoutButton() {
-    const router = useRouter();
-    const handleClick = () => {
-        router.push('/');
-    };
-    return <Button onClick={handleClick} text="ログアウト" />;
-
+  const router = useRouter();
+  const handleClick = () => {
+    router.push('/');
+  };
+  return <Button onClick={handleClick} text="ログアウト" />;
 }
 
 export default LogoutButton;
