@@ -6,18 +6,18 @@ import MapConponent from '../components/Atoms/MapComponent';
 import Button from '../components/Atoms/Button';
 import axios from 'axios';
 import RankButtons from '../components/Organisms/RankButtons';
-import YearButtons from '../components/Organisms/YeraButtons';
+import YearButtons from '../components/Organisms/YearButtons';
 import AddModal from '../components/Templates/AddModal';
 import EditModal from '../components/Templates/EditModal';
 
 axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
 
 export default function Home() {
-  const [bridgedata, setBridgedata] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
-  const [selectedMarker, setSelectedMarker] = useState(null);
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [bridgedata, setBridgedata] = useState([]); //表示する橋のデータ
+  const [filteredData, setFilteredData] = useState([]); //検索と絞り込みのデータ
+  const [selectedMarker, setSelectedMarker] = useState(null); //選択された橋のデータ
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false); //追加モーダルの表示
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false); //編集モーダルの表示
 
   useEffect(() => {
     axios
@@ -31,7 +31,7 @@ export default function Home() {
       });
   }, []);
 
-  const handleSearch = (query) => {
+  const handleSearch = (query) => { //検索ボックスに入力した時の処理
     const filtered = bridgedata.filter((item) => item.Name.includes(query));
     setFilteredData(filtered);
     if (filtered.length === 0) {
@@ -39,7 +39,7 @@ export default function Home() {
     }
   };
 
-  const handleRankButtonClick = (onResults) => {
+  const handleRankButtonClick = (onResults) => { //健全度ボタンを押した時の処理
     const filtered = onResults;
     setFilteredData(filtered);
     if (filtered.length === 0) {
@@ -47,11 +47,11 @@ export default function Home() {
     }
   };
 
-  const handleMarkerClick = (item) => {
+  const handleMarkerClick = (item) => { //マーカーをクリックした時の処理
     setSelectedMarker(item);
   };
 
-  const handleDeleteButtonClick = async () => {
+  const handleDeleteButtonClick = async () => { //削除ボタンを押した時の処理
     const isConfirmed = window.confirm('本当に削除しますか？');
     if (!isConfirmed) return;
 
@@ -64,13 +64,14 @@ export default function Home() {
         }
       );
       alert('削除に成功しました');
+      setSelectedMarker(null);
     } catch (error) {
       console.error(error);
       alert('削除中にエラーが発生しました');
     }
   };
 
-  const handleAddConfilmButtonClick = async (data) => {
+  const handleAddConfilmButtonClick = async (data) => { //追加ボタンを押した時の処理
     const isConfirmed = window.confirm('本当に追加しますか？');
     if (!isConfirmed) return;
     console.log('なかまをよぶ');
@@ -83,7 +84,7 @@ export default function Home() {
       alert('追加中にエラーが発生しました');
     }
   };
-  const handleEditButtonClick = async (data) => {
+  const handleEditButtonClick = async (data) => { //編集ボタンを押した時の処理
     try {
       const response = await axios.put(
         `/putopendata/${selectedMarker._id}`,
@@ -96,7 +97,7 @@ export default function Home() {
       console.error(error);
       alert('更新中にエラーが発生しました');
     }
-  }
+  };
 
   return (
     <>

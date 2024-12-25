@@ -139,14 +139,18 @@ const EditModal = ({ isOpen, onClose, onCancel, onConfirm, editData }) => {
           title="橋の長さ"
           label="ここに入力"
           value={formData.length}
-          onChange={(e) => handleInputChange('length', parceInt(e.target.value)) || ''} 
+          onChange={(e) =>
+            handleInputChange('length', parceInt(e.target.value)) || ''
+          }
           type="number"
         />
         <InputField
           title="橋の幅"
           label="ここに入力"
           value={formData.width}
-          onChange={(e) => handleInputChange('width', parseInt(e.target.value))  || ''}
+          onChange={(e) =>
+            handleInputChange('width', parseInt(e.target.value)) || ''
+          }
           type="number"
         />
         <div
@@ -178,7 +182,9 @@ const EditModal = ({ isOpen, onClose, onCancel, onConfirm, editData }) => {
           title="点検年度"
           label="例: 2023"
           value={formData.Date}
-          onChange={(e) => handleInputChange('Date', parseInt(e.target.value) || '')}
+          onChange={(e) =>
+            handleInputChange('Date', parseInt(e.target.value) || '')
+          }
           type="number"
         />
         <div
