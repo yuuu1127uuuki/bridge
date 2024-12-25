@@ -97,7 +97,7 @@ export default function Home() {
       console.error(error);
       alert('更新中にエラーが発生しました');
     }
-  }
+  };
 
   return (
     <>
@@ -110,7 +110,8 @@ export default function Home() {
         <div style={{ textAlign: 'right', marginTop: '20px' }}>
           <RankButtons handleRankButtonClick={handleRankButtonClick} />
         </div>
-        <ResetButton /><LogoutButton />
+        <ResetButton />
+        <LogoutButton />
         <YearButtons handleYearButtonClick={handleRankButtonClick} />
         <div style={{ marginTop: '20px' }}>
           <ConsoleWindow
