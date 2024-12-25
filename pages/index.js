@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SearchBox from '../components/Atoms/SearchBox';
 import ResetButton from '../components/Molecules/ResetButton';
+import LogoutButton from '../components/Molecules/LogoutButton';
 import ConsoleWindow from '../components/Atoms/ConsoleWindow';
 import MapConponent from '../components/Atoms/MapComponent';
 import Button from '../components/Atoms/Button';
@@ -109,7 +110,7 @@ export default function Home() {
         <div style={{ textAlign: 'right', marginTop: '20px' }}>
           <RankButtons handleRankButtonClick={handleRankButtonClick} />
         </div>
-        <ResetButton />
+        <ResetButton /><LogoutButton />
         <YearButtons handleYearButtonClick={handleRankButtonClick} />
         <div style={{ marginTop: '20px' }}>
           <ConsoleWindow
