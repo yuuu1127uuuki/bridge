@@ -6,7 +6,7 @@ const currentYear = new Date().getFullYear();
 
 const YearButtons = ({ handleYearButtonClick }) => {
   return (
-    <div>
+    <div style={{ display: 'flex', justifyContent: 'right', height: '25px' }}>
       <FilterButton
         column="Date"
         value={currentYear - 1}

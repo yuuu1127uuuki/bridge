@@ -10,6 +10,7 @@ import RankButtons from '../components/Organisms/RankButtons';
 import YearButtons from '../components/Organisms/YearButtons';
 import AddModal from '../components/Templates/AddModal';
 import EditModal from '../components/Templates/EditModal';
+import styles from '../styles/main.module.css';
 
 axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
 
@@ -101,19 +102,29 @@ export default function Home() {
 
   return (
     <>
-      <div style={{ textAlign: 'center', backgroundColor: '#fdffe7' }}>
-        <h1 style={{ fontSize: '3em', color: '#8c7676', marginTop: '0px' }}>
+      <div className={styles.all}>
+        <span className={styles.Logout}>
+          <LogoutButton />
+        </span>
+        <h1 className={styles.header}>
           橋梁情報管理システム
         </h1>
-        <Button onClick={() => setIsAddModalOpen(true)} text="追加" />
         <SearchBox onSearch={handleSearch} />
-        <div style={{ textAlign: 'right', marginTop: '20px' }}>
+        <span className={styles.reset}>
+          <ResetButton />
+        </span>
+        <div className={styles.rank}>
+          健 全 度 ：
           <RankButtons handleRankButtonClick={handleRankButtonClick} />
         </div>
-        <ResetButton />
-        <LogoutButton />
-        <YearButtons handleYearButtonClick={handleRankButtonClick} />
-        <div style={{ marginTop: '20px' }}>
+        <span style={{ display: 'flex', marginLeft: 'auto', width: '25%', float: 'left' }}>
+          <Button onClick={() => setIsAddModalOpen(true)} text="新しい橋梁の追加" />
+        </span>
+        <div className={styles.year}>
+          経過年度：
+          <YearButtons handleYearButtonClick={handleRankButtonClick} />
+        </div>
+        <div className={styles.console}>
           <ConsoleWindow
             data={selectedMarker}
             onDelete={handleDeleteButtonClick}
