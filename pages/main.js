@@ -12,6 +12,7 @@ import AddModal from '../components/Templates/AddModal';
 import EditModal from '../components/Templates/EditModal';
 import styles from '../styles/main.module.css';
 import DownloadButton from '../components/Molecules/DownloadButton';
+import HistoryButton from '../components/Molecules/HistoryButton';
 
 axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
 
@@ -112,6 +113,7 @@ export default function Home() {
         </h1>
         <DownloadButton data={filteredData} />
         <SearchBox onSearch={handleSearch} />
+        <HistoryButton />
         <span className={styles.reset}>
           <ResetButton />
         </span>
