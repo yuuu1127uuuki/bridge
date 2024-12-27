@@ -11,6 +11,11 @@ const DownloadButton = ({ data, filename = 'kyouryou.xlsx' }) => {
       return;
     }
     const worksheet = XLSX.utils.json_to_sheet(data);
+
+    // テーブル範囲を設定
+    const range = XLSX.utils.decode_range(worksheet['!ref']);
+    worksheet['!autofilter'] = { ref: XLSX.utils.encode_range(range) };
+
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
     const wbout = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
