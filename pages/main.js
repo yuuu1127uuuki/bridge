@@ -3,7 +3,7 @@ import SearchBox from '../components/Atoms/SearchBox';
 import ResetButton from '../components/Molecules/ResetButton';
 import LogoutButton from '../components/Molecules/LogoutButton';
 import ConsoleWindow from '../components/Atoms/ConsoleWindow';
-import MapConponent from '../components/Atoms/MapComponent';
+import MapConponent from '../components/Molecules/MapComponent';
 import Button from '../components/Atoms/Button';
 import axios from 'axios';
 import RankButtons from '../components/Organisms/RankButtons';
@@ -67,6 +67,7 @@ export default function Home() {
           method: 'DELETE',
         }
       );
+      setSelectedMarker(null);
       alert('削除に成功しました');
     } catch (error) {
       console.error(error);
@@ -135,7 +136,7 @@ export default function Home() {
             onEdit={() => setIsEditModalOpen(true)}
           />
         </div>
-        <MapConponent data={filteredData} onMarkerClick={handleMarkerClick} />
+        <MapConponent data={filteredData} selected={selectedMarker} onMarkerClick={handleMarkerClick} />
         <AddModal
           isOpen={isAddModalOpen}
           onClose={() => setIsAddModalOpen(false)}

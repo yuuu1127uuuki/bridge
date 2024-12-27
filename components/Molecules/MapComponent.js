@@ -3,15 +3,20 @@ import {
   APIProvider,
   Map,
   Marker,
-  InfoWindow,
 } from '@vis.gl/react-google-maps';
+import InfoWindowContent from '../Atoms/InfoWindowContent';
 
-const MapConponent = ({ data, onMarkerClick }) => {
+const MapConponent = ({ data, selected, onMarkerClick }) => {
   const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
-  const [selected, setSelected] = React.useState(null);
+  // const [selected, setSelected] = React.useState(null);
 
+  // const handleMarkerClick = (item) => {
+  //   setSelected(item);
+  //   if (onMarkerClick) {
+  //     onMarkerClick(item);
+  //   }
+  // };
   const handleMarkerClick = (item) => {
-    setSelected(item);
     if (onMarkerClick) {
       onMarkerClick(item);
     }
@@ -39,23 +44,10 @@ const MapConponent = ({ data, onMarkerClick }) => {
         })}
 
         {selected && (
-          <InfoWindow
-            position={{
-              lat: parseFloat(selected.Id.split(',')[0]),
-              lng: parseFloat(selected.Id.split(',')[1]),
-            }}
-            onCloseClick={() => setSelected(null)}
-          >
-            <div>
-              <h3 style={{ textAlign: 'center' }}>{selected.Name}</h3>
-              <div style={{ textAlign: 'left' }}>
-                <p>Address: {selected.address}</p>
-                <p>Inspector: {selected.Inspector}</p>
-                <p>Road: {selected.Road}</p>
-                <p>Rank: {selected.Rank}</p>
-              </div>
-            </div>
-          </InfoWindow>
+          <InfoWindowContent
+            selected={selected}
+            onClose={() => onMarkerClick(null)}
+          />
         )}
       </Map>
     </APIProvider>
