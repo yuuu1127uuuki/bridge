@@ -11,6 +11,7 @@ import YearButtons from '../components/Organisms/YearButtons';
 import AddModal from '../components/Templates/AddModal';
 import EditModal from '../components/Templates/EditModal';
 import styles from '../styles/main.module.css';
+import HistoryButton from '../components/Molecules/HistoryButton';
 
 axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
 
@@ -110,6 +111,7 @@ export default function Home() {
           橋梁情報管理システム
         </h1>
         <SearchBox onSearch={handleSearch} />
+        <HistoryButton />
         <span className={styles.reset}>
           <ResetButton />
         </span>
