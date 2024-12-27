@@ -1,0 +1,37 @@
+.all {
+  text-align: center;
+  background-color: #fdffe7;
+}
+
+.header {
+  font-size: 3em;
+  color: #8c7676;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  /* background-color: #ff0000; */
+  /* display: flex; */
+  justify-content: center;
+}
+
+.Logout {
+  margin-left: auto;
+  float: right;
+}
+
+.reset {
+  display: flex;
+  margin-Left: auto;
+  width: 25%;
+  float: left;
+}
+
+.year,
+.rank {
+  color: #8c7676;
+  margin: 2px;
+  display: flex;
+  margin-left: auto;
+  width: 28%;
+  /* background-color: #ff0000; */
+
+}

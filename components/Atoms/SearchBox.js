@@ -25,7 +25,7 @@ const SearchBox = ({ onSearch }) => {
         value={query}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
-        style={{ marginRight: '10px', width: '300px', height: '30px' }}
+        style={{ justifyContent: 'center', width: '300px', height: '30px' }}
       />
       <button
         onClick={handleSearch}

@@ -3,7 +3,7 @@ import FilterButton from '../Molecules/FilterButton';
 
 const RankButtons = ({ handleRankButtonClick }) => {
   return (
-    <div>
+    <div style={{ display: 'flex', justifyContent: 'right', height: '25px', }}>
       <FilterButton
         column="Rank"
         value="Ⅰ"
