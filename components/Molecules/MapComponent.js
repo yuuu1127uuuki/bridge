@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  APIProvider,
-  Map,
-  Marker,
-} from '@vis.gl/react-google-maps';
+import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
 import InfoWindowContent from '../Atoms/InfoWindowContent';
 
 const MapConponent = ({ data, selected, onMarkerClick }) => {

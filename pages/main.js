@@ -109,9 +109,7 @@ export default function Home() {
         <span className={styles.Logout}>
           <LogoutButton />
         </span>
-        <h1 className={styles.header}>
-          橋梁情報管理システム
-        </h1>
+        <h1 className={styles.header}>橋梁情報管理システム</h1>
         <DownloadButton data={filteredData} />
         <SearchBox onSearch={handleSearch} />
         <HistoryButton />
@@ -122,8 +120,18 @@ export default function Home() {
           健 全 度 ：
           <RankButtons handleRankButtonClick={handleRankButtonClick} />
         </div>
-        <span style={{ display: 'flex', marginLeft: 'auto', width: '25%', float: 'left' }}>
-          <Button onClick={() => setIsAddModalOpen(true)} text="新しい橋梁の追加" />
+        <span
+          style={{
+            display: 'flex',
+            marginLeft: 'auto',
+            width: '25%',
+            float: 'left',
+          }}
+        >
+          <Button
+            onClick={() => setIsAddModalOpen(true)}
+            text="新しい橋梁の追加"
+          />
         </span>
         <div className={styles.year}>
           経過年度：
@@ -136,7 +144,11 @@ export default function Home() {
             onEdit={() => setIsEditModalOpen(true)}
           />
         </div>
-        <MapConponent data={filteredData} selected={selectedMarker} onMarkerClick={handleMarkerClick} />
+        <MapConponent
+          data={filteredData}
+          selected={selectedMarker}
+          onMarkerClick={handleMarkerClick}
+        />
         <AddModal
           isOpen={isAddModalOpen}
           onClose={() => setIsAddModalOpen(false)}
