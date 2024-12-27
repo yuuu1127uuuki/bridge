@@ -23,9 +23,7 @@ const DownloadButton = ({ data, filename = 'kyouryou.xlsx' }) => {
     saveAs(blob, filename);
   };
 
-  return (
-    <Button onClick={handleDownload} text={"Excelダウンロード"}></Button>
-  );
+  return <Button onClick={handleDownload} text={'Excelダウンロード'}></Button>;
 };
 
 export default DownloadButton;

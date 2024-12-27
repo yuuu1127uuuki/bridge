@@ -3,7 +3,7 @@ import SearchBox from '../components/Atoms/SearchBox';
 import ResetButton from '../components/Molecules/ResetButton';
 import LogoutButton from '../components/Molecules/LogoutButton';
 import ConsoleWindow from '../components/Atoms/ConsoleWindow';
-import MapConponent from '../components/Atoms/MapComponent';
+import MapConponent from '../components/Molecules/MapComponent';
 import Button from '../components/Atoms/Button';
 import axios from 'axios';
 import RankButtons from '../components/Organisms/RankButtons';
@@ -69,6 +69,7 @@ export default function Home() {
           method: 'DELETE',
         }
       );
+      setSelectedMarker(null);
       alert('削除に成功しました');
     } catch (error) {
       console.error(error);
@@ -110,11 +111,13 @@ export default function Home() {
         <span className={styles.Logout}>
           <LogoutButton />
         </span>
+
         <h1 className={styles.header}>
           橋梁情報管理システム
         </h1>
         <HistoryButton />
         <ExcelFormatButton />
+
         <DownloadButton data={filteredData} />
         <SearchBox onSearch={handleSearch} />
         <span className={styles.reset}>
@@ -124,8 +127,18 @@ export default function Home() {
           健 全 度 ：
           <RankButtons handleRankButtonClick={handleRankButtonClick} />
         </div>
-        <span style={{ display: 'flex', marginLeft: 'auto', width: '25%', float: 'left' }}>
-          <Button onClick={() => setIsAddModalOpen(true)} text="新しい橋梁の追加" />
+        <span
+          style={{
+            display: 'flex',
+            marginLeft: 'auto',
+            width: '25%',
+            float: 'left',
+          }}
+        >
+          <Button
+            onClick={() => setIsAddModalOpen(true)}
+            text="新しい橋梁の追加"
+          />
         </span>
         <div className={styles.year}>
           経過年度：
@@ -138,7 +151,11 @@ export default function Home() {
             onEdit={() => setIsEditModalOpen(true)}
           />
         </div>
-        <MapConponent data={filteredData} onMarkerClick={handleMarkerClick} />
+        <MapConponent
+          data={filteredData}
+          selected={selectedMarker}
+          onMarkerClick={handleMarkerClick}
+        />
         <AddModal
           isOpen={isAddModalOpen}
           onClose={() => setIsAddModalOpen(false)}

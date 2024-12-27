@@ -5,7 +5,7 @@ import ResetButton from '../components/Molecules/ResetButton';
 import LogoutButton from '../components/Molecules/LogoutButton';
 import { useState, useEffect } from 'react';
 import InfoWindow from '../components/Atoms/ConsoleWindow';
-import MapConponent from '../components/Atoms/MapComponent';
+import MapConponent from '../components/Molecules/MapComponent';
 import InputField from '../components/Atoms/InputField';
 import Modal from '../components/Organisms/Modal';
 import axios from 'axios';
