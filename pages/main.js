@@ -84,6 +84,7 @@ export default function Home() {
     try {
       const response = await axios.post('/postopendata', data);
       alert('追加に成功しました');
+      setIsAddModalOpen(false);
       console.log(data); // 送信するデータを確認
     } catch (error) {
       console.error(error);
@@ -97,8 +98,7 @@ export default function Home() {
         data
       );
       alert('更新に成功しました');
-      console.log(data);
-      console.log(response);
+      setIsEditModalOpen(false);
     } catch (error) {
       console.error(error);
       alert('更新中にエラーが発生しました');
