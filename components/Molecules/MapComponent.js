@@ -1,22 +1,16 @@
 import React from 'react';
 import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
 import InfoWindowContent from '../Atoms/InfoWindowContent';
+import NumberOfPins from '../Atoms/NumberOfPins';
 
-const MapConponent = ({ data, selected, onMarkerClick }) => {
+const MapComponent = ({ data, selected, onMarkerClick }) => {
   const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
-  // const [selected, setSelected] = React.useState(null);
-
-  // const handleMarkerClick = (item) => {
-  //   setSelected(item);
-  //   if (onMarkerClick) {
-  //     onMarkerClick(item);
-  //   }
-  // };
   const handleMarkerClick = (item) => {
     if (onMarkerClick) {
       onMarkerClick(item);
     }
   };
+
   return (
     <APIProvider apiKey={API_KEY}>
       <Map
@@ -40,14 +34,12 @@ const MapConponent = ({ data, selected, onMarkerClick }) => {
         })}
 
         {selected && (
-          <InfoWindowContent
-            selected={selected}
-            onClose={() => onMarkerClick(null)}
-          />
+          <InfoWindowContent selected={selected} />
         )}
       </Map>
+      <NumberOfPins count={data.length} />
     </APIProvider>
   );
 };
 
-export default MapConponent;
+export default MapComponent;
