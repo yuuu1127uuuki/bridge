@@ -5,7 +5,6 @@ import InputField from '../Atoms/InputField';
 const EditModal = ({ isOpen, onClose, onCancel, onConfirm, editData }) => {
   const [formData, setFormData] = useState({
     _id: '',
-    bridge: '',
     Inspector: '',
     Tel: '',
     Id: '',
@@ -18,19 +17,15 @@ const EditModal = ({ isOpen, onClose, onCancel, onConfirm, editData }) => {
     length: '',
     width: '',
     HowUse: '',
+    Schedule: '',
     Date: '',
     Rank: '',
-    Schedule: '',
-    New: '',
-    Record: '',
-    Co: '',
   });
 
   useEffect(() => {
     if (editData) {
       setFormData({
         _id: editData._id || '',
-        bridge: editData.bridge || '',
         Inspector: editData.Inspector || '',
         Tel: editData.Tel || '',
         Id: editData.Id || '',
@@ -43,12 +38,9 @@ const EditModal = ({ isOpen, onClose, onCancel, onConfirm, editData }) => {
         length: editData.length || '',
         width: editData.width || '',
         HowUse: editData.HowUse || '',
+        Schedule: editData.Schedule || '',
         Date: editData.Date || '',
         Rank: editData.Rank || '',
-        Schedule: editData.Schedule || '',
-        New: editData.New || '',
-        Record: editData.Record || '',
-        Co: editData.Co || '',
       });
     }
   }, [editData]);
@@ -74,12 +66,6 @@ const EditModal = ({ isOpen, onClose, onCancel, onConfirm, editData }) => {
           label="ハイフン込みで12文字を入力"
           value={formData._id}
           onChange={(e) => handleInputChange('_id', e.target.value)}
-        />
-        <InputField
-          title="タイプ"
-          label="ここに入力"
-          value={formData.bridge}
-          onChange={(e) => handleInputChange('bridge', e.target.value)}
         />
         <InputField
           title="管理事務所"
@@ -179,6 +165,12 @@ const EditModal = ({ isOpen, onClose, onCancel, onConfirm, editData }) => {
           </select>
         </div>
         <InputField
+          title="次回点検年度"
+          label="ここに入力"
+          value={formData.Schedule}
+          onChange={(e) => handleInputChange('Schedule', e.target.value)}
+        />
+        <InputField
           title="点検年度"
           label="例: 2023"
           value={formData.Date}
@@ -208,30 +200,6 @@ const EditModal = ({ isOpen, onClose, onCancel, onConfirm, editData }) => {
             <option value="Ⅲ">Ⅲ</option>
           </select>
         </div>
-        <InputField
-          title="次回点検年度"
-          label="ここに入力"
-          value={formData.Schedule}
-          onChange={(e) => handleInputChange('Schedule', e.target.value)}
-        />
-        <InputField
-          title="最新補修年度"
-          label="ここに入力"
-          value={formData.New}
-          onChange={(e) => handleInputChange('New', e.target.value)}
-        />
-        <InputField
-          title="橋梁管理カルテ"
-          label="ここに入力"
-          value={formData.Record}
-          onChange={(e) => handleInputChange('Record', e.target.value)}
-        />
-        <InputField
-          title="Co施工記録データ"
-          label="ここに入力"
-          value={formData.Co}
-          onChange={(e) => handleInputChange('Co', e.target.value)}
-        />
       </div>
     </Modal>
   );
