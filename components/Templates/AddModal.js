@@ -5,7 +5,6 @@ import InputField from '../Atoms/InputField';
 const AddModal = ({ isOpen, onClose, onCancel, onConfirm }) => {
   const [formData, setFormData] = useState({
     _id: '',
-    bridge: '',
     Inspector: '',
     Tel: '',
     Id: '',
@@ -18,12 +17,9 @@ const AddModal = ({ isOpen, onClose, onCancel, onConfirm }) => {
     length: '',
     width: '',
     HowUse: '',
+    Schedule: '',
     Date: '',
     Rank: '',
-    Schedule: '',
-    New: '',
-    Record: '',
-    Co: '',
   });
 
   const handleInputChange = (field, value) => {
