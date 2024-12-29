@@ -16,17 +16,17 @@ import HistoryButton from '../components/Molecules/HistoryButton';
 import ExcelFormatButton from '../components/Molecules/ExcelFormatButton';
 import NumberOfPins from '../components/Atoms/NumberOfPins';
 
-
 axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
 
 export default function Home() {
-  const [bridgedata, setBridgedata] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
-  const [selectedMarker, setSelectedMarker] = useState(null);
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [bridgedata, setBridgedata] = useState([]); // 橋梁データ
+  const [filteredData, setFilteredData] = useState([]); // 絞り込んだ橋のデータ
+  const [selectedMarker, setSelectedMarker] = useState(null); // 選択されたマーカーのデータ
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false); // 追加モーダルの表示状態
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false); // 編集モーダルの表示状態
 
   useEffect(() => {
+    // ページが読み込まれた時にデータを取得する
     axios
       .get('/getopendata')
       .then((response) => {
@@ -39,6 +39,7 @@ export default function Home() {
   }, []);
 
   const handleSearch = (query) => {
+    // 検索ワードに一致するデータを絞り込む
     const filtered = bridgedata.filter((item) => item.Name.includes(query));
     setFilteredData(filtered);
     if (filtered.length === 0) {
@@ -46,7 +47,8 @@ export default function Home() {
     }
   };
 
-  const handleRankButtonClick = (onResults) => {
+  const handleFilterButtonClick = (onResults) => {
+    // 絞り込みボタンが押された時の処理
     const filtered = onResults;
     setFilteredData(filtered);
     if (filtered.length === 0) {
@@ -55,10 +57,12 @@ export default function Home() {
   };
 
   const handleMarkerClick = (item) => {
+    // マーカーがクリックされた時の処理
     setSelectedMarker(item);
   };
 
   const handleDeleteButtonClick = async () => {
+    // 削除ボタンが押された時の処理
     const isConfirmed = window.confirm('本当に削除しますか？');
     if (!isConfirmed) return;
 
@@ -79,6 +83,7 @@ export default function Home() {
   };
 
   const handleAddConfilmButtonClick = async (data) => {
+    // 追加ボタンが押された時の処理
     const isConfirmed = window.confirm('本当に追加しますか？');
     if (!isConfirmed) return;
     console.log('なかまをよぶ');
@@ -93,6 +98,7 @@ export default function Home() {
     }
   };
   const handleEditButtonClick = async (data) => {
+    // 編集ボタンが押された時の処理
     try {
       const response = await axios.put(
         `/putopendata/${selectedMarker._id}`,
@@ -126,7 +132,7 @@ export default function Home() {
         </span>
         <div className={styles.rank}>
           健 全 度 ：
-          <RankButtons handleRankButtonClick={handleRankButtonClick} />
+          <RankButtons handleRankButtonClick={handleFilterButtonClick} />
         </div>
         <span
           style={{
@@ -143,7 +149,7 @@ export default function Home() {
         </span>
         <div className={styles.year}>
           経過年度：
-          <YearButtons handleYearButtonClick={handleRankButtonClick} />
+          <YearButtons handleYearButtonClick={handleFilterButtonClick} />
         </div>
         <div className={styles.console}>
           <ConsoleWindow
