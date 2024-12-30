@@ -49,12 +49,6 @@ const AddModal = ({ isOpen, onClose, onCancel, onConfirm }) => {
           onChange={(e) => handleInputChange('_id', e.target.value)}
         />
         <InputField
-          title="タイプ"
-          label="ここに入力"
-          value={formData.bridge}
-          onChange={(e) => handleInputChange('bridge', e.target.value)}
-        />
-        <InputField
           title="管理事務所"
           label="ここに入力"
           value={formData.Inspector}
@@ -146,6 +140,12 @@ const AddModal = ({ isOpen, onClose, onCancel, onConfirm }) => {
           </select>
         </div>
         <InputField
+          title="次回点検年度"
+          label="ここに入力"
+          value={formData.Schedule}
+          onChange={(e) => handleInputChange('Schedule', e.target.value)}
+        />
+        <InputField
           title="点検年度"
           label="例: 2023"
           value={formData.Date}
@@ -172,30 +172,6 @@ const AddModal = ({ isOpen, onClose, onCancel, onConfirm }) => {
             <option value="Ⅲ">Ⅲ</option>
           </select>
         </div>
-        <InputField
-          title="次回点検年度"
-          label="ここに入力"
-          value={formData.Schedule}
-          onChange={(e) => handleInputChange('Schedule', e.target.value)}
-        />
-        <InputField
-          title="最新補修年度"
-          label="ここに入力"
-          value={formData.New}
-          onChange={(e) => handleInputChange('New', e.target.value)}
-        />
-        <InputField
-          title="橋梁管理カルテ"
-          label="ここに入力"
-          value={formData.Record}
-          onChange={(e) => handleInputChange('Record', e.target.value)}
-        />
-        <InputField
-          title="Co施工記録データ"
-          label="ここに入力"
-          value={formData.Co}
-          onChange={(e) => handleInputChange('Co', e.target.value)}
-        />
       </div>
     </Modal>
   );
