@@ -14,7 +14,7 @@ const MapComponent = ({ data, selected, onMarkerClick }) => {
   return (
     <APIProvider apiKey={API_KEY}>
       <Map
-        style={{ width: '100vw', height: '100vh' }}
+        style={{ width: '97vw', height: '100vh', marginRight: '10px' }}
         defaultCenter={{ lat: 34.2941965, lng: 131.6204442 }}
         defaultZoom={9}
         gestureHandling={'cooperative'}
