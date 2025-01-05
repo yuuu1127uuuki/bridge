@@ -26,7 +26,7 @@ const InputExcelButton = () => {
         let json = XLSX.utils.sheet_to_json(worksheet);
 
         // JSONファイルの項目名を変更し、データがない場合はnullを設定
-        json = json.map(item => ({
+        json = json.map((item) => ({
           _id: item['施設ID'] || null,
           Inspector: item['管理事務所名'] || null,
           Tel: item['管理先電話番号'] || null,
@@ -42,7 +42,7 @@ const InputExcelButton = () => {
           HowUse: item['種類'] || null,
           Schedule: item['次回点検'] || null,
           Date: item['最新点検年度'] || null,
-          Rank: item['健全度'] || null
+          Rank: item['健全度'] || null,
         }));
 
         console.log('読み込んだデータ:', XLSX.utils.sheet_to_json(worksheet));
