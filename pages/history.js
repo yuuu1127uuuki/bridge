@@ -31,7 +31,7 @@ const History = () => {
           <div key={index}>
             <hr className={styles.horizontalLine} />
             <p className={styles.textStyle}><strong>修正方法:</strong> {item.operation}</p>
-            <p className={styles.textStyle}><strong>ID:</strong> {item.data._id}</p>
+            {/* <p className={styles.textStyle}><strong>ID:</strong> {item.data._id}</p> */}
             <p className={styles.textStyle}><strong>管理事務所:</strong> {item.data.Inspector}</p>
             <p className={styles.textStyle}><strong>電話番号:</strong> {item.data.Tel}</p>
             <p className={styles.textStyle}><strong>緯度経度:</strong> {item.data.Id}</p>
