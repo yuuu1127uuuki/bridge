@@ -24,7 +24,7 @@ const ConsoleWindow = ({ data, onEdit, onDelete }) => {
             <td style={cellStyle}>{data.Name}</td>
             <td style={cellStyle}>{data.Id}</td>
             <td style={cellStyle}>
-              <Button text="編集" onClick={onEdit} />
+              <Button text="修正" onClick={onEdit} />
               <Button text="削除" onClick={onDelete} />
             </td>
           </tr>
