@@ -15,6 +15,7 @@ import DownloadButton from '../components/Molecules/DownloadButton';
 import HistoryButton from '../components/Molecules/HistoryButton';
 import ExcelFormatButton from '../components/Molecules/ExcelFormatButton';
 import NumberOfPins from '../components/Atoms/NumberOfPins';
+import InputExcelButton from '../components/Molecules/inputExcelButton';
 
 axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
 
@@ -119,13 +120,12 @@ export default function Home() {
           <LogoutButton />
         </span>
 
-        <h1 className={styles.header}>
-          橋梁情報管理システム
-        </h1>
+        <h1 className={styles.header}>橋梁情報管理システム</h1>
         <HistoryButton />
         <ExcelFormatButton />
         <DownloadButton data={filteredData} />
         <SearchBox onSearch={handleSearch} />
+        <InputExcelButton />
         <NumberOfPins count={filteredData.length} />
         <span className={styles.reset}>
           <ResetButton />

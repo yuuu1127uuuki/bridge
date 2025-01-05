@@ -33,9 +33,7 @@ const MapComponent = ({ data, selected, onMarkerClick }) => {
           );
         })}
 
-        {selected && (
-          <InfoWindowContent selected={selected} />
-        )}
+        {selected && <InfoWindowContent selected={selected} />}
       </Map>
       <NumberOfPins count={data.length} />
     </APIProvider>
