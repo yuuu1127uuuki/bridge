@@ -2,11 +2,16 @@ import React, { useState } from 'react';
 import { InfoWindow } from '@vis.gl/react-google-maps';
 import Button from './Button';
 
-const InfoWindowContent = ({ selected, onClose }) => {
+const InfoWindowContent = ({ selected, onClose = () => {} }) => {
   const [showDetails, setShowDetails] = useState(false);
 
   const toggleDetails = () => {
     setShowDetails(!showDetails);
+  };
+
+  const handleCloseClick = () => {
+    setShowDetails(false);
+    onClose();
   };
 
   return (
@@ -15,10 +20,18 @@ const InfoWindowContent = ({ selected, onClose }) => {
         lat: parseFloat(selected.Id.split(',')[0]),
         lng: parseFloat(selected.Id.split(',')[1]),
       }}
-      onCloseClick={onClose}
+      onCloseClick={handleCloseClick}
     >
       <div>
-        <h3 style={{ textAlign: 'center', position: 'sticky', top: 0, backgroundColor: 'white', zIndex: 1 }}>
+        <h3
+          style={{
+            textAlign: 'center',
+            position: 'sticky',
+            top: 0,
+            backgroundColor: 'white',
+            zIndex: 1,
+          }}
+        >
           {selected.Name}
         </h3>
         <div style={{ textAlign: 'left' }}>
@@ -42,7 +55,10 @@ const InfoWindowContent = ({ selected, onClose }) => {
               {/* 他の詳細情報をここに追加 */}
             </div>
           )}
-          <Button onClick={toggleDetails} text={showDetails ? '閉じる' : 'もっとみる'} />
+          <Button
+            onClick={toggleDetails}
+            text={showDetails ? '閉じる' : 'もっとみる'}
+          />
         </div>
       </div>
     </InfoWindow>

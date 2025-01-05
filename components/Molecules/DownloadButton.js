@@ -13,13 +13,26 @@ const DownloadButton = ({ data, filename = 'kyouryou.xlsx' }) => {
 
     // ヘッダーを追加
     const headers = [
-      '施設ID', '管理事務所名', '管理先電話番号', '緯度,経度', '施設名', '施設名カナ',
-      '路線', '所在地', '橋梁の種類', '架設年（西暦）', '橋長（m）', '幅員（m）',
-      '種類', '次回点検年', '最新点検年度', '健全度'
+      '施設ID',
+      '管理事務所名',
+      '管理先電話番号',
+      '緯度,経度',
+      '施設名',
+      '施設名カナ',
+      '路線',
+      '所在地',
+      '橋梁の種類',
+      '架設年（西暦）',
+      '橋長（m）',
+      '幅員（m）',
+      '種類',
+      '次回点検年',
+      '最新点検年度',
+      '健全度',
     ];
 
     // データを配列に変換
-    const dataArray = data.map(item => Object.values(item));
+    const dataArray = data.map((item) => Object.values(item));
 
     // ヘッダーとデータを結合
     const dataWithHeaders = [headers, ...dataArray];

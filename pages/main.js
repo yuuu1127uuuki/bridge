@@ -119,9 +119,7 @@ export default function Home() {
           <LogoutButton />
         </span>
 
-        <h1 className={styles.header}>
-          橋梁情報管理システム
-        </h1>
+        <h1 className={styles.header}>橋梁情報管理システム</h1>
         <HistoryButton />
         <ExcelFormatButton />
         <DownloadButton data={filteredData} />
