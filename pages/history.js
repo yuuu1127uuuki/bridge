@@ -30,23 +30,55 @@ const History = () => {
         {historyData.map((item, index) => (
           <div key={index}>
             <hr className={styles.horizontalLine} />
-            <p className={styles.textStyle}><strong>修正方法:</strong> {item.operation}</p>
+            <p className={styles.textStyle}>
+              <strong>修正方法:</strong> {item.operation}
+            </p>
             {/* <p className={styles.textStyle}><strong>ID:</strong> {item.data._id}</p> */}
-            <p className={styles.textStyle}><strong>管理事務所:</strong> {item.data.Inspector}</p>
-            <p className={styles.textStyle}><strong>電話番号:</strong> {item.data.Tel}</p>
-            <p className={styles.textStyle}><strong>緯度経度:</strong> {item.data.Id}</p>
-            <p className={styles.textStyle}><strong>名前:</strong> {item.data.Name}</p>
-            <p className={styles.textStyle}><strong>ﾅﾏｴﾅﾏｴ:</strong> {item.data.Kana}</p>
-            <p className={styles.textStyle}><strong>道路:</strong> {item.data.Road}</p>
-            <p className={styles.textStyle}><strong>住所:</strong> {item.data.address}</p>
-            <p className={styles.textStyle}><strong>橋の形式:</strong> {item.data.Keisiki}</p>
-            <p className={styles.textStyle}><strong>建設年度:</strong> {item.data.birth}</p>
-            <p className={styles.textStyle}><strong>橋の長さ:</strong> {item.data.length}</p>
-            <p className={styles.textStyle}><strong>橋の幅:</strong> {item.data.width}</p>
-            <p className={styles.textStyle}><strong>使用用途:</strong> {item.data.HowUse}</p>
-            <p className={styles.textStyle}><strong>点検年度:</strong> {item.data.Date}</p>
-            <p className={styles.textStyle}><strong>健全度:</strong> {item.data.Rank}</p>
-            <p className={styles.textStyle}><strong>変更日時:</strong> {item.timestamp}</p>
+            <p className={styles.textStyle}>
+              <strong>管理事務所:</strong> {item.data.Inspector}
+            </p>
+            <p className={styles.textStyle}>
+              <strong>電話番号:</strong> {item.data.Tel}
+            </p>
+            <p className={styles.textStyle}>
+              <strong>緯度経度:</strong> {item.data.Id}
+            </p>
+            <p className={styles.textStyle}>
+              <strong>名前:</strong> {item.data.Name}
+            </p>
+            <p className={styles.textStyle}>
+              <strong>ﾅﾏｴﾅﾏｴ:</strong> {item.data.Kana}
+            </p>
+            <p className={styles.textStyle}>
+              <strong>道路:</strong> {item.data.Road}
+            </p>
+            <p className={styles.textStyle}>
+              <strong>住所:</strong> {item.data.address}
+            </p>
+            <p className={styles.textStyle}>
+              <strong>橋の形式:</strong> {item.data.Keisiki}
+            </p>
+            <p className={styles.textStyle}>
+              <strong>建設年度:</strong> {item.data.birth}
+            </p>
+            <p className={styles.textStyle}>
+              <strong>橋の長さ:</strong> {item.data.length}
+            </p>
+            <p className={styles.textStyle}>
+              <strong>橋の幅:</strong> {item.data.width}
+            </p>
+            <p className={styles.textStyle}>
+              <strong>使用用途:</strong> {item.data.HowUse}
+            </p>
+            <p className={styles.textStyle}>
+              <strong>点検年度:</strong> {item.data.Date}
+            </p>
+            <p className={styles.textStyle}>
+              <strong>健全度:</strong> {item.data.Rank}
+            </p>
+            <p className={styles.textStyle}>
+              <strong>変更日時:</strong> {item.timestamp}
+            </p>
           </div>
         ))}
       </div>
