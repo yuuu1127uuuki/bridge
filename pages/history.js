@@ -4,7 +4,9 @@ import styles from '../styles/main.module.css';
 import HomeButton from '../components/Molecules/HomeButton';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
+// axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
+axios.defaults.baseURL = 'http://localhost:8000';
+
 
 const History = () => {
   const [historyData, setHistoryData] = useState([]);
@@ -33,7 +35,9 @@ const History = () => {
             <p className={styles.textStyle}>
               <strong>修正方法:</strong> {item.operation}
             </p>
-            {/* <p className={styles.textStyle}><strong>ID:</strong> {item.data._id}</p> */}
+            <p className={styles.textStyle}><strong>ID:</strong> {item.data._id}</p>
+            <p className={styles.textStyle}><strong>ID2:</strong> {item._id}</p>
+
             <p className={styles.textStyle}>
               <strong>管理事務所:</strong> {item.data.Inspector}
             </p>
