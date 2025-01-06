@@ -7,7 +7,6 @@ import axios from 'axios';
 // axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
 axios.defaults.baseURL = 'http://localhost:8000';
 
-
 const History = () => {
   const [historyData, setHistoryData] = useState([]);
 
@@ -35,8 +34,12 @@ const History = () => {
             <p className={styles.textStyle}>
               <strong>修正方法:</strong> {item.operation}
             </p>
-            <p className={styles.textStyle}><strong>ID:</strong> {item.data._id}</p>
-            <p className={styles.textStyle}><strong>ID2:</strong> {item._id}</p>
+            <p className={styles.textStyle}>
+              <strong>ID:</strong> {item.data._id}
+            </p>
+            <p className={styles.textStyle}>
+              <strong>ID2:</strong> {item._id}
+            </p>
 
             <p className={styles.textStyle}>
               <strong>管理事務所:</strong> {item.data.Inspector}
@@ -81,14 +84,15 @@ const History = () => {
               <strong>健全度:</strong> {item.data.Rank}
             </p>
             <p className={styles.textStyle}>
-              <strong>変更日時:</strong> {new Date(item.timestamp).toLocaleString('ja-JP', {
+              <strong>変更日時:</strong>{' '}
+              {new Date(item.timestamp).toLocaleString('ja-JP', {
                 timeZone: 'Asia/Tokyo',
                 year: 'numeric',
                 month: '2-digit',
                 day: '2-digit',
                 hour: '2-digit',
                 minute: '2-digit',
-                second: '2-digit'
+                second: '2-digit',
               })}
             </p>
           </div>

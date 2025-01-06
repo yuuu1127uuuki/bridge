@@ -45,7 +45,6 @@ export default function Home() {
       });
   }, []);
 
-
   const handleSearch = (query) => {
     // 検索ワードに一致するデータを絞り込む
     const filtered = bridgedata.filter((item) => item.Name.includes(query));
@@ -82,12 +81,9 @@ export default function Home() {
 
     console.log('ニフラム');
     try {
-      const response = await axios.delete(
-        `/deleteopendata/${marker._id}`,
-        {
-          method: 'DELETE',
-        }
-      );
+      const response = await axios.delete(`/deleteopendata/${marker._id}`, {
+        method: 'DELETE',
+      });
       setSelectedMarker(null);
       alert('削除に成功しました');
       window.location.reload();
