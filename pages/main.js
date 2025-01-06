@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import SearchBox from '../components/Atoms/SearchBox';
 import ResetButton from '../components/Molecules/ResetButton';
 import LogoutButton from '../components/Molecules/LogoutButton';
@@ -23,8 +23,13 @@ export default function Home() {
   const [bridgedata, setBridgedata] = useState([]); // 橋梁データ
   const [filteredData, setFilteredData] = useState([]); // 絞り込んだ橋のデータ
   const [selectedMarker, setSelectedMarker] = useState(null); // 選択されたマーカーのデータ
+  const selectedMarkerRef = useRef(selectedMarker);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // 追加モーダルの表示状態
   const [isEditModalOpen, setIsEditModalOpen] = useState(false); // 編集モーダルの表示状態
+
+  useEffect(() => {
+    selectedMarkerRef.current = selectedMarker;
+  }, [selectedMarker]);
 
   useEffect(() => {
     // ページが読み込まれた時にデータを取得する
@@ -38,6 +43,7 @@ export default function Home() {
         console.error('データの取得に失敗しました', error);
       });
   }, []);
+
 
   const handleSearch = (query) => {
     // 検索ワードに一致するデータを絞り込む
@@ -67,21 +73,41 @@ export default function Home() {
     const isConfirmed = window.confirm('本当に削除しますか？');
     if (!isConfirmed) return;
 
+    const marker = selectedMarkerRef.current;
+    if (!marker || !marker._id) {
+      alert('削除する対象が選択されていません');
+      return;
+    }
+
     console.log('ニフラム');
     try {
       const response = await axios.delete(
-        `/deleteopendata/${selectedMarker._id}`,
+        `/deleteopendata/${marker._id}`,
         {
           method: 'DELETE',
         }
       );
       setSelectedMarker(null);
       alert('削除に成功しました');
+      window.location.reload();
     } catch (error) {
       console.error(error);
       alert('削除中にエラーが発生しました');
     }
   };
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Delete' || event.key === 'Del') {
+        handleDeleteButtonClick();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
   const handleAddConfilmButtonClick = async (data) => {
     // 追加ボタンが押された時の処理
@@ -93,6 +119,7 @@ export default function Home() {
       alert('追加に成功しました');
       setIsAddModalOpen(false);
       console.log(data); // 送信するデータを確認
+      window.location.reload();
     } catch (error) {
       console.error(error);
       alert('追加中にエラーが発生しました');
@@ -107,6 +134,7 @@ export default function Home() {
       );
       alert('更新に成功しました');
       setIsEditModalOpen(false);
+      window.location.reload();
     } catch (error) {
       console.error(error);
       alert('更新中にエラーが発生しました');
