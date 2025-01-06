@@ -140,12 +140,6 @@ const AddModal = ({ isOpen, onClose, onCancel, onConfirm }) => {
           </select>
         </div>
         <InputField
-          title="次回点検年度"
-          label="ここに入力"
-          value={formData.Schedule}
-          onChange={(e) => handleInputChange('Schedule', e.target.value)}
-        />
-        <InputField
           title="点検年度"
           label="例: 2023"
           value={formData.Date}
