@@ -47,7 +47,7 @@ const History = () => {
               <strong>名前:</strong> {item.data.Name}
             </p>
             <p className={styles.textStyle}>
-              <strong>ﾅﾏｴﾅﾏｴ:</strong> {item.data.Kana}
+              <strong>ﾅﾏｴ:</strong> {item.data.Kana}
             </p>
             <p className={styles.textStyle}>
               <strong>道路:</strong> {item.data.Road}
@@ -77,7 +77,15 @@ const History = () => {
               <strong>健全度:</strong> {item.data.Rank}
             </p>
             <p className={styles.textStyle}>
-              <strong>変更日時:</strong> {item.timestamp}
+              <strong>変更日時:</strong> {new Date(item.timestamp).toLocaleString('ja-JP', {
+                timeZone: 'Asia/Tokyo',
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+              })}
             </p>
           </div>
         ))}
