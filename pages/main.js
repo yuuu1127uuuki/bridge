@@ -17,8 +17,7 @@ import ExcelFormatButton from '../components/Molecules/ExcelFormatButton';
 import NumberOfPins from '../components/Atoms/NumberOfPins';
 import InputExcelButton from '../components/Molecules/inputExcelButton';
 
-// axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
-axios.defaults.baseURL = 'http://localhost:8000';
+axios.defaults.baseURL = 'https://bridge-backend-09fde0d4fb8f.herokuapp.com/';
 
 export default function Home() {
   const [bridgedata, setBridgedata] = useState([]); // 橋梁データ
