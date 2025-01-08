@@ -16,6 +16,9 @@ import HistoryButton from '../components/Molecules/HistoryButton';
 import ExcelFormatButton from '../components/Molecules/ExcelFormatButton';
 import NumberOfPins from '../components/Atoms/NumberOfPins';
 import InputExcelButton from '../components/Molecules/inputExcelButton';
+import PinDeleteButton from '../components/Molecules/PinDeleteButton';
+import _idDeleteButton from '../components/Molecules/_idDeleteButton';
+import TonnelButton from '../components/Molecules/TonnelButton';
 
 axios.defaults.baseURL = 'https://bridge-backend-09fde0d4fb8f.herokuapp.com/';
 
@@ -142,11 +145,14 @@ export default function Home() {
       <div className={styles.all}>
         <span className={styles.Logout}>
           <LogoutButton />
+          <TonnelButton />
         </span>
 
         <h1 className={styles.header}>橋梁情報管理システム</h1>
         <HistoryButton />
         <ExcelFormatButton />
+        <_idDeleteButton />
+        <PinDeleteButton />
         <DownloadButton data={filteredData} />
         <SearchBox onSearch={handleSearch} />
         <InputExcelButton />
