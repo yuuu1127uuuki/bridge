@@ -64,7 +64,7 @@ export default function Home() {
 
   const handleRankButtonClick = (column, value) => {
     const filtered = bridgedata.filter((item) => item[column].includes(value));
-    setFilteredData(filtered)
+    setFilteredData(filtered);
   };
 
   const handleYearButtonClick = (column, value) => {
@@ -75,7 +75,7 @@ export default function Home() {
   const handleManyYearButtonClick = (value) => {
     const filtered = bridgedata.filter((item) => item.Date <= value);
     setFilteredData(filtered);
-  }
+  };
 
   const handleDeleteButtonClick = async () => {
     // 削除ボタンが押された時の処理
@@ -149,7 +149,8 @@ export default function Home() {
 
   const menuItems1 = [
     {
-      name: '健全度', elements: [
+      name: '健全度',
+      elements: [
         <FilterButton
           column="Rank"
           value="Ⅰ"
@@ -173,13 +174,15 @@ export default function Home() {
           value="Ⅳ"
           onFilter={handleRankButtonClick}
           text="Ⅳ"
-        />]
-    }
+        />,
+      ],
+    },
   ];
 
   const menuItems2 = [
     {
-      name: '最終点検年からの経過年数', elements: [
+      name: '最終点検年からの経過年数',
+      elements: [
         <FilterButton
           column="Date"
           value={currentYear - 1}
@@ -214,15 +217,25 @@ export default function Home() {
           text={'6年以上'}
           onClick={() => handleManyYearButtonClick(currentYear - 6)}
         />,
-      ]
-    }
+      ],
+    },
   ];
 
   const menuItems3 = [
-    { name: 'Excel入出力', elements: [<ExcelFormatButton />, <InputExcelButton />, <DownloadButton data={filteredData} />] }
+    {
+      name: 'Excel入出力',
+      elements: [
+        <ExcelFormatButton />,
+        <InputExcelButton />,
+        <DownloadButton data={filteredData} />,
+      ],
+    },
   ];
   const menuItems4 = [
-    { name: 'まとめて削除', elements: [<_idDeleteButton />, <PinDeleteButton />] }
+    {
+      name: 'まとめて削除',
+      elements: [<_idDeleteButton />, <PinDeleteButton />],
+    },
   ];
 
   return (
@@ -260,9 +273,7 @@ export default function Home() {
             width: '25%',
             float: 'left',
           }}
-        >
-
-        </span>
+        ></span>
         <div className={styles.console}>
           <ConsoleWindow
             data={selectedMarker}
