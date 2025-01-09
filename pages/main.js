@@ -6,8 +6,6 @@ import ConsoleWindow from '../components/Atoms/ConsoleWindow';
 import MapConponent from '../components/Molecules/MapComponent';
 import Button from '../components/Atoms/Button';
 import axios from 'axios';
-import RankButtons from '../components/Organisms/RankButtons';
-import YearButtons from '../components/Organisms/YearButtons';
 import AddModal from '../components/Templates/AddModal';
 import EditModal from '../components/Templates/EditModal';
 import styles from '../styles/main.module.css';
@@ -19,6 +17,8 @@ import InputExcelButton from '../components/Molecules/inputExcelButton';
 import PinDeleteButton from '../components/Molecules/PinDeleteButton';
 import _idDeleteButton from '../components/Molecules/_idDeleteButton';
 import TonnelButton from '../components/Molecules/TonnelButton';
+import Menu from '../components/Templates/menu';
+import FilterButton from '../components/Molecules/FilterButton';
 
 axios.defaults.baseURL = 'https://bridge-backend-09fde0d4fb8f.herokuapp.com/';
 
@@ -29,6 +29,7 @@ export default function Home() {
   const selectedMarkerRef = useRef(selectedMarker);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // 追加モーダルの表示状態
   const [isEditModalOpen, setIsEditModalOpen] = useState(false); // 編集モーダルの表示状態
+  const currentYear = new Date().getFullYear();
 
   useEffect(() => {
     selectedMarkerRef.current = selectedMarker;
@@ -56,19 +57,25 @@ export default function Home() {
     }
   };
 
-  const handleFilterButtonClick = (onResults) => {
-    // 絞り込みボタンが押された時の処理
-    const filtered = onResults;
-    setFilteredData(filtered);
-    if (filtered.length === 0) {
-      alert('該当するデータがありません');
-    }
-  };
-
   const handleMarkerClick = (item) => {
     // マーカーがクリックされた時の処理
     setSelectedMarker(item);
   };
+
+  const handleRankButtonClick = (column, value) => {
+    const filtered = bridgedata.filter((item) => item[column].includes(value));
+    setFilteredData(filtered)
+  };
+
+  const handleYearButtonClick = (column, value) => {
+    const filtered = bridgedata.filter((item) => item[column] === value);
+    setFilteredData(filtered);
+  };
+
+  const handleManyYearButtonClick = (value) => {
+    const filtered = bridgedata.filter((item) => item.Date <= value);
+    setFilteredData(filtered);
+  }
 
   const handleDeleteButtonClick = async () => {
     // 削除ボタンが押された時の処理
@@ -140,29 +147,111 @@ export default function Home() {
     }
   };
 
+  const menuItems1 = [
+    {
+      name: '健全度', elements: [
+        <FilterButton
+          column="Rank"
+          value="Ⅰ"
+          onFilter={handleRankButtonClick}
+          text="Ⅰ"
+        />,
+        <FilterButton
+          column="Rank"
+          value="Ⅱ"
+          onFilter={handleRankButtonClick}
+          text="Ⅱ"
+        />,
+        <FilterButton
+          column="Rank"
+          value="Ⅲ"
+          onFilter={handleRankButtonClick}
+          text="Ⅲ"
+        />,
+        <FilterButton
+          column="Rank"
+          value="Ⅳ"
+          onFilter={handleRankButtonClick}
+          text="Ⅳ"
+        />]
+    }
+  ];
+
+  const menuItems2 = [
+    {
+      name: '最終点検年からの経過年数', elements: [
+        <FilterButton
+          column="Date"
+          value={currentYear - 1}
+          onFilter={handleYearButtonClick}
+          text="1"
+        />,
+        <FilterButton
+          column="Date"
+          value={currentYear - 2}
+          onFilter={handleYearButtonClick}
+          text="2"
+        />,
+        <FilterButton
+          column="Date"
+          value={currentYear - 3}
+          onFilter={handleYearButtonClick}
+          text="3"
+        />,
+        <FilterButton
+          column="Date"
+          value={currentYear - 4}
+          onFilter={handleYearButtonClick}
+          text="4"
+        />,
+        <FilterButton
+          column="Date"
+          value={currentYear - 5}
+          onFilter={handleYearButtonClick}
+          text="5"
+        />,
+        <Button
+          text={'6年以上'}
+          onClick={() => handleManyYearButtonClick(currentYear - 6)}
+        />,
+      ]
+    }
+  ];
+
+  const menuItems3 = [
+    { name: 'Excel入出力', elements: [<ExcelFormatButton />, <InputExcelButton />, <DownloadButton data={filteredData} />] }
+  ];
+  const menuItems4 = [
+    { name: 'まとめて削除', elements: [<_idDeleteButton />, <PinDeleteButton />] }
+  ];
+
   return (
     <>
       <div className={styles.all}>
-        <span className={styles.Logout}>
-          <LogoutButton />
-          <TonnelButton />
-        </span>
-
-        <h1 className={styles.header}>橋梁情報管理システム</h1>
-        <HistoryButton />
-        <ExcelFormatButton />
-        <_idDeleteButton />
-        <PinDeleteButton />
-        <DownloadButton data={filteredData} />
-        <SearchBox onSearch={handleSearch} />
-        <InputExcelButton />
-        <NumberOfPins count={filteredData.length} />
-        <span className={styles.reset}>
-          <ResetButton />
-        </span>
-        <div className={styles.rank}>
-          健 全 度 ：
-          <RankButtons handleRankButtonClick={handleFilterButtonClick} />
+        <div className={styles.headerContainer}>
+          <div className={styles.topRow}>
+            <h1 className={styles.header}>橋梁情報管理システム</h1>
+            <SearchBox onSearch={handleSearch} />
+            <span className={styles.Num}>
+              <NumberOfPins count={filteredData.length} />
+            </span>
+            <div className={styles.Button}>
+              <Button
+                onClick={() => setIsAddModalOpen(true)}
+                text="新しい橋梁の追加"
+              />
+              <ResetButton />
+              <TonnelButton />
+              <HistoryButton />
+              <LogoutButton />
+            </div>
+          </div>
+          <div className={styles.menuRow}>
+            <Menu menuItems={menuItems1} />
+            <Menu menuItems={menuItems2} />
+            <Menu menuItems={menuItems3} />
+            <Menu menuItems={menuItems4} />
+          </div>
         </div>
         <span
           style={{
@@ -172,15 +261,8 @@ export default function Home() {
             float: 'left',
           }}
         >
-          <Button
-            onClick={() => setIsAddModalOpen(true)}
-            text="新しい橋梁の追加"
-          />
+
         </span>
-        <div className={styles.year}>
-          経過年度：
-          <YearButtons handleYearButtonClick={handleFilterButtonClick} />
-        </div>
         <div className={styles.console}>
           <ConsoleWindow
             data={selectedMarker}

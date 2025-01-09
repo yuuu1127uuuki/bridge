@@ -1,0 +1,57 @@
+.menuContainer {
+    display: flex;
+    justify-content: center;
+    /* 中央揃え */
+    align-items: center;
+    /* 垂直方向も中央揃え */
+    width: 100%;
+}
+
+.menuItem {
+    position: relative;
+    display: flex;
+    width: 100%;
+    text-align: center;
+    /* テキスト中央揃え */
+}
+
+.menuItem button {
+    width: 100%;
+    background-color: #c9fdd7;
+    color: #8c7676;
+    outline: 1px solid #99f0ca;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdownMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    /* 項目と同じ幅に設定 */
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    text-align: center;
+    /* テキスト中央揃え */
+}
+
+.dropdownMenu button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #c9fdd7;
+    /* 項目と同じ背景色 */
+    color: #8c7676;
+    /* 項目と同じテキスト色 */
+    text-align: center;
+    /* テキスト中央揃え */
+}
+
+.dropdownMenu button:hover {
+    background-color: #f0f0f0;
+}
