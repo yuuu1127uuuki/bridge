@@ -15,7 +15,7 @@ import ExcelFormatButton from '../components/Molecules/ExcelFormatButton';
 import NumberOfPins from '../components/Atoms/NumberOfPins';
 import InputExcelButton from '../components/Molecules/inputExcelButton';
 import PinDeleteButton from '../components/Molecules/PinDeleteButton';
-import _idDeleteButton from '../components/Molecules/_idDeleteButton';
+import IdDeleteButton from '../components/Molecules/_idDeleteButton';
 import TonnelButton from '../components/Molecules/TonnelButton';
 import Menu from '../components/Templates/menu';
 import FilterButton from '../components/Molecules/FilterButton';
@@ -152,24 +152,28 @@ export default function Home() {
       name: '健全度',
       elements: [
         <FilterButton
+          key="rank-1"
           column="Rank"
           value="Ⅰ"
           onFilter={handleRankButtonClick}
           text="Ⅰ"
         />,
         <FilterButton
+          key="rank-2"
           column="Rank"
           value="Ⅱ"
           onFilter={handleRankButtonClick}
           text="Ⅱ"
         />,
         <FilterButton
+          key="rank-3"
           column="Rank"
           value="Ⅲ"
           onFilter={handleRankButtonClick}
           text="Ⅲ"
         />,
         <FilterButton
+          key="rank-4"
           column="Rank"
           value="Ⅳ"
           onFilter={handleRankButtonClick}
@@ -184,36 +188,42 @@ export default function Home() {
       name: '最終点検年からの経過年数',
       elements: [
         <FilterButton
+          key="date-1"
           column="Date"
           value={currentYear - 1}
           onFilter={handleYearButtonClick}
           text="1"
         />,
         <FilterButton
+          key="date-2"
           column="Date"
           value={currentYear - 2}
           onFilter={handleYearButtonClick}
           text="2"
         />,
         <FilterButton
+          key="date-3"
           column="Date"
           value={currentYear - 3}
           onFilter={handleYearButtonClick}
           text="3"
         />,
         <FilterButton
+          key="date-4"
           column="Date"
           value={currentYear - 4}
           onFilter={handleYearButtonClick}
           text="4"
         />,
         <FilterButton
+          key="date-5"
           column="Date"
           value={currentYear - 5}
           onFilter={handleYearButtonClick}
           text="5"
         />,
         <Button
+          key="date-6"
           text={'6年以上'}
           onClick={() => handleManyYearButtonClick(currentYear - 6)}
         />,
@@ -225,21 +235,32 @@ export default function Home() {
     {
       name: 'Excel入出力',
       elements: [
-        <ExcelFormatButton />,
-        <InputExcelButton />,
-        <DownloadButton data={filteredData} />,
+        <ExcelFormatButton key="excel-format" />,
+        <InputExcelButton key="input-excel" />,
+        <DownloadButton key="download" data={filteredData} />,
       ],
     },
   ];
   const menuItems4 = [
     {
       name: 'まとめて削除',
-      elements: [<_idDeleteButton />, <PinDeleteButton />],
+      elements: [
+        <IdDeleteButton key="id-delete" />,
+        <PinDeleteButton key="pin-delete" />,
+      ],
     },
   ];
 
   return (
-    <>
+    <div>
+      {bridgedata.map((bridge, index) => (
+        <div key={index}>{/* 各橋のデータを表示するコンポーネント */}</div>
+      ))}
+      {filteredData.map((bridge, index) => (
+        <div key={index}>
+          {/* 絞り込んだ橋のデータを表示するコンポーネント */}
+        </div>
+      ))}
       <div className={styles.all}>
         <div className={styles.headerContainer}>
           <div className={styles.topRow}>
@@ -300,6 +321,6 @@ export default function Home() {
           editData={selectedMarker}
         />
       </div>
-    </>
+    </div>
   );
 }
