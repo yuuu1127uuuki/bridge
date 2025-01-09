@@ -1,7 +1,6 @@
 .all {
   text-align: center;
   background-color: #fdffe7;
-  margin-left: 0.5%;
   margin-top: 7em;
 }
 
@@ -20,7 +19,7 @@
 }
 
 .Num {
-  margin-left: 10px;
+  margin-left: 0.05em;
 }
 
 .header {
@@ -39,7 +38,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1em;
+  margin-right: 1em;
 }
 
 .year,
