@@ -229,27 +229,29 @@ export default function Home() {
     <>
       <div className={styles.all}>
         <div className={styles.headerContainer}>
-          <h1 className={styles.header}>橋梁情報管理システム</h1>
-          <SearchBox onSearch={handleSearch} />
-          <span className={styles.Num}>
-            <NumberOfPins count={filteredData.length} />
-          </span>
-          <div className={styles.Button}>
-            <Button
-              onClick={() => setIsAddModalOpen(true)}
-              text="新しい橋梁の追加"
-            />
-            <ResetButton />
-            <TonnelButton />
-            <HistoryButton />
-            <LogoutButton />
+          <div className={styles.topRow}>
+            <h1 className={styles.header}>橋梁情報管理システム</h1>
+            <SearchBox onSearch={handleSearch} />
+            <span className={styles.Num}>
+              <NumberOfPins count={filteredData.length} />
+            </span>
+            <div className={styles.Button}>
+              <Button
+                onClick={() => setIsAddModalOpen(true)}
+                text="新しい橋梁の追加"
+              />
+              <ResetButton />
+              <TonnelButton />
+              <HistoryButton />
+              <LogoutButton />
+            </div>
           </div>
-        </div>
-        <div className={styles.menuRow}>
-          <Menu menuItems={menuItems1} />
-          <Menu menuItems={menuItems2} />
-          <Menu menuItems={menuItems3} />
-          <Menu menuItems={menuItems4} />
+          <div className={styles.menuRow}>
+            <Menu menuItems={menuItems1} />
+            <Menu menuItems={menuItems2} />
+            <Menu menuItems={menuItems3} />
+            <Menu menuItems={menuItems4} />
+          </div>
         </div>
         <span
           style={{
