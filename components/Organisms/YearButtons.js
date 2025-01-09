@@ -10,36 +10,36 @@ const YearButtons = ({ handleYearButtonClick }) => {
       <FilterButton
         column="Date"
         value={currentYear - 1}
-        onResults={handleYearButtonClick}
+        onFilter={handleYearButtonClick}
         text="1"
       />
       <FilterButton
         column="Date"
         value={currentYear - 2}
-        onResults={handleYearButtonClick}
+        onFilter={handleYearButtonClick}
         text="2"
       />
       <FilterButton
         column="Date"
         value={currentYear - 3}
-        onResults={handleYearButtonClick}
+        onFilter={handleYearButtonClick}
         text="3"
       />
       <FilterButton
         column="Date"
         value={currentYear - 4}
-        onResults={handleYearButtonClick}
+        onFilter={handleYearButtonClick}
         text="4"
       />
       <FilterButton
         column="Date"
         value={currentYear - 5}
-        onResults={handleYearButtonClick}
+        onFilter={handleYearButtonClick}
         text="5"
       />
       <PastButton
         value={currentYear - 6}
-        onResults={handleYearButtonClick}
+        onFilter={handleYearButtonClick}
         text="6年以上"
       />
     </div>
