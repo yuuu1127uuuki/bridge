@@ -2,12 +2,12 @@ import React from 'react';
 import Button from '../Atoms/Button';
 import axios from 'axios';
 
-// データを絞り込むボタンコンポーネント
+// 6年以上前のボタンのコンポーネント
 
 // axios.defaults.baseURL = `http://${hostname}:8000`
 axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
 
-const FilterButton = ({ column, value, onResults, text }) => {
+const PastButton = ({ value, onResults, text }) => {
   const handleClick = async () => {
     axios.get('/getopendata').then(({ data: res }) => {
       if (!res) {
@@ -16,12 +16,7 @@ const FilterButton = ({ column, value, onResults, text }) => {
         try {
           // データベースから一致するレコードを取得
           const filteredBridges = res.filter((item) => {
-            if (typeof value === 'string') {
-              return item[column].includes(value);
-            } else if (typeof value === 'number') {
-              return item[column] === value;
-            }
-            return false;
+            return item.Date <= value;
           });
           onResults(filteredBridges);
         } catch (error) {
@@ -38,4 +33,4 @@ const FilterButton = ({ column, value, onResults, text }) => {
   );
 };
 
-export default FilterButton;
+export default PastButton;
