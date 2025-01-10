@@ -159,7 +159,7 @@ export default function Home() {
         <h1 className={styles.header}>橋梁情報管理システム</h1>
         <HistoryButton />
         <ExcelFormatButton />
-        <_idDeleteButton />
+        <IdDeleteButton />
         <PinDeleteButton />
         <DownloadButton data={filteredData} />
         <SearchBox onSearch={handleSearch} />

@@ -5,7 +5,7 @@ import axios from 'axios';
 // データを絞り込むボタンコンポーネント
 
 // axios.defaults.baseURL = `http://${hostname}:8000`
-axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
+axios.defaults.baseURL = 'https://bridge-backend-09fde0d4fb8f.herokuapp.com/';
 
 const FilterButton = ({ column, value, onResults, text }) => {
   const handleClick = async () => {
