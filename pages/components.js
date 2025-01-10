@@ -11,8 +11,9 @@ import Modal from '../components/Organisms/Modal';
 import axios from 'axios';
 import React from 'react';
 import InputExcelButton from '../components/Molecules/inputExcelButton';
+import DropDown from '../components/Atoms/DropDown';
 
-axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
+axios.defaults.baseURL = 'https://bridge-backend-09fde0d4fb8f.herokuapp.com/';
 
 export default function About() {
   const [searchResult, setSearchResult] = useState('');
@@ -47,6 +48,7 @@ export default function About() {
     <div>
       <h1>コンポーネント一覧</h1>
       <div style={{ padding: '16px' }}>
+        <DropDown />
         <InputExcelButton />
         <h1>Search Box Example</h1>
         <SearchBox onSearch={handleSearch} />
