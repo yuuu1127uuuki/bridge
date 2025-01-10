@@ -151,23 +151,26 @@ export default function Home() {
         </div>
       ))}
       <div className={styles.all}>
-        <span className={styles.Logout}>
-          <LogoutButton />
-          <TonnelButton />
-        </span>
-
-        <h1 className={styles.header}>橋梁情報管理システム</h1>
-        <HistoryButton />
+        <div className={styles.headerContainer}>
+          <div className={styles.topRow}>
+            <h1 className={styles.header}>橋梁情報管理システム</h1>
+            <SearchBox onSearch={handleSearch} />
+            <NumberOfPins className={styles.Num} count={filteredData.length} />
+            <Button
+              onClick={() => setIsAddModalOpen(true)}
+              text="新しい橋梁の追加"
+            />
+            <ResetButton />
+            <TonnelButton />
+            <HistoryButton />
+            <LogoutButton />
+          </div>
+        </div>
         <ExcelFormatButton />
+        <InputExcelButton />
+        <DownloadButton data={filteredData} />
         <IdDeleteButton />
         <PinDeleteButton />
-        <DownloadButton data={filteredData} />
-        <SearchBox onSearch={handleSearch} />
-        <InputExcelButton />
-        <NumberOfPins count={filteredData.length} />
-        <span className={styles.reset}>
-          <ResetButton />
-        </span>
         <div className={styles.rank}>
           健 全 度 ：
           <RankButtons handleRankButtonClick={handleFilterButtonClick} />
@@ -180,10 +183,6 @@ export default function Home() {
             float: 'left',
           }}
         >
-          <Button
-            onClick={() => setIsAddModalOpen(true)}
-            text="新しい橋梁の追加"
-          />
         </span>
         <div className={styles.year}>
           経過年度：
