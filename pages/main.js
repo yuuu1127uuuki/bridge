@@ -6,8 +6,6 @@ import ConsoleWindow from '../components/Atoms/ConsoleWindow';
 import MapConponent from '../components/Molecules/MapComponent';
 import Button from '../components/Atoms/Button';
 import axios from 'axios';
-import RankButtons from '../components/Organisms/RankButtons';
-import YearButtons from '../components/Organisms/YearButtons';
 import AddModal from '../components/Templates/AddModal';
 import EditModal from '../components/Templates/EditModal';
 import styles from '../styles/main.module.css';
@@ -19,6 +17,7 @@ import InputExcelButton from '../components/Molecules/inputExcelButton';
 import PinDeleteButton from '../components/Molecules/PinDeleteButton';
 import IdDeleteButton from '../components/Molecules/_idDeleteButton';
 import TonnelButton from '../components/Molecules/TonnelButton';
+import Pulldowns from '../components/Molecules/PullDowns';
 
 axios.defaults.baseURL = 'https://bridge-backend-09fde0d4fb8f.herokuapp.com/';
 
@@ -56,13 +55,8 @@ export default function Home() {
     }
   };
 
-  const handleFilterButtonClick = (onResults) => {
-    // 絞り込みボタンが押された時の処理
-    const filtered = onResults;
-    setFilteredData(filtered);
-    if (filtered.length === 0) {
-      alert('該当するデータがありません');
-    }
+  const handleFilter = (filteredData) => {
+    setFilteredData(filteredData);
   };
 
   const handleMarkerClick = (item) => {
@@ -157,21 +151,21 @@ export default function Home() {
         </span>
 
         <h1 className={styles.header}>橋梁情報管理システム</h1>
-        <HistoryButton />
+        {/* <HistoryButton />
         <ExcelFormatButton />
         <IdDeleteButton />
         <PinDeleteButton />
-        <DownloadButton data={filteredData} />
+        <DownloadButton data={filteredData} /> */}
         <SearchBox onSearch={handleSearch} />
-        <InputExcelButton />
+        {/* <InputExcelButton /> */}
         <NumberOfPins count={filteredData.length} />
         <span className={styles.reset}>
           <ResetButton />
         </span>
-        <div className={styles.rank}>
+        {/* <div className={styles.rank}>
           健 全 度 ：
           <RankButtons handleRankButtonClick={handleFilterButtonClick} />
-        </div>
+        </div> */}
         <span
           style={{
             display: 'flex',
@@ -185,10 +179,11 @@ export default function Home() {
             text="新しい橋梁の追加"
           />
         </span>
-        <div className={styles.year}>
+        {/* <div className={styles.year}>
           経過年度：
           <YearButtons handleYearButtonClick={handleFilterButtonClick} />
-        </div>
+        </div> */}
+        <Pulldowns data={bridgedata} onFilter={handleFilter} />
         <div className={styles.console}>
           <ConsoleWindow
             data={selectedMarker}
