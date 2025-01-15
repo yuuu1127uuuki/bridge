@@ -15,7 +15,7 @@ import ExcelFormatButton from '../components/Molecules/ExcelFormatButton';
 import NumberOfPins from '../components/Atoms/NumberOfPins';
 import InputExcelButton from '../components/Molecules/inputExcelButton';
 import PinDeleteButton from '../components/Molecules/PinDeleteButton';
-import _idDeleteButton from '../components/Molecules/_idDeleteButton';
+import IdDeleteButton from '../components/Molecules/_idDeleteButton';
 import TonnelButton from '../components/Molecules/TonnelButton';
 import Pulldowns from '../components/Molecules/PullDowns';
 
@@ -135,7 +135,15 @@ export default function Home() {
   };
 
   return (
-    <>
+    <div>
+      {bridgedata.map((bridge, index) => (
+        <div key={index}>{/* 各橋のデータを表示するコンポーネント */}</div>
+      ))}
+      {filteredData.map((bridge, index) => (
+        <div key={index}>
+          {/* 絞り込んだ橋のデータを表示するコンポーネント */}
+        </div>
+      ))}
       <div className={styles.all}>
         <span className={styles.Logout}>
           <LogoutButton />
@@ -145,7 +153,7 @@ export default function Home() {
         <h1 className={styles.header}>橋梁情報管理システム</h1>
         {/* <HistoryButton />
         <ExcelFormatButton />
-        <_idDeleteButton />
+        <IdDeleteButton />
         <PinDeleteButton />
         <DownloadButton data={filteredData} /> */}
         <SearchBox onSearch={handleSearch} />
@@ -202,6 +210,6 @@ export default function Home() {
           editData={selectedMarker}
         />
       </div>
-    </>
+    </div>
   );
 }
