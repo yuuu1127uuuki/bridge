@@ -11,6 +11,8 @@ import Modal from '../components/Organisms/Modal';
 import axios from 'axios';
 import React from 'react';
 import InputExcelButton from '../components/Molecules/inputExcelButton';
+import Pulldown from '../components/Atoms/Pulldown';
+import Pulldowns from '../components/Molecules/PullDowns';
 
 axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
 
@@ -43,9 +45,21 @@ export default function About() {
   const handleFilterResults = (results) => {
     console.log(results);
   };
+
+  const handleItemClick = (item) => {
+    alert(`You clicked ${item}`);
+  };
   return (
     <div>
       <h1>コンポーネント一覧</h1>
+      <div style={{ padding: '16px' }}>
+        <Pulldown
+          text="Pulldown"
+          items={['item1', 'item2', 'item3']}
+          onItemClick={handleItemClick}
+        />
+        <Pulldowns />
+      </div>
       <div style={{ padding: '16px' }}>
         <InputExcelButton />
         <h1>Search Box Example</h1>
