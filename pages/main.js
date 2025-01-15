@@ -11,7 +11,7 @@ import EditModal from '../components/Templates/EditModal';
 import styles from '../styles/main.module.css';
 import NumberOfPins from '../components/Atoms/NumberOfPins';
 import PinDeleteButton from '../components/Molecules/PinDeleteButton';
-import _idDeleteButton from '../components/Molecules/_idDeleteButton';
+import IdDeleteButton from '../components/Molecules/_idDeleteButton';
 import TonnelButton from '../components/Molecules/TonnelButton';
 import Pulldowns from '../components/Molecules/Pulldowns';
 import HistoryButton from '../components/Molecules/HistoryButton';
@@ -132,7 +132,15 @@ export default function Home() {
   };
 
   return (
-    <>
+    <div>
+      {bridgedata.map((bridge, index) => (
+        <div key={index}>{/* 各橋のデータを表示するコンポーネント */}</div>
+      ))}
+      {filteredData.map((bridge, index) => (
+        <div key={index}>
+          {/* 絞り込んだ橋のデータを表示するコンポーネント */}
+        </div>
+      ))}
       <div className={styles.all}>
         <span className={styles.Logout}>
           <LogoutButton />
@@ -188,6 +196,6 @@ export default function Home() {
           editData={selectedMarker}
         />
       </div>
-    </>
+    </div>
   );
 }
