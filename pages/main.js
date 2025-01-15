@@ -6,8 +6,6 @@ import ConsoleWindow from '../components/Atoms/ConsoleWindow';
 import MapConponent from '../components/Molecules/MapComponent';
 import Button from '../components/Atoms/Button';
 import axios from 'axios';
-import RankButtons from '../components/Organisms/RankButtons';
-import YearButtons from '../components/Organisms/YearButtons';
 import AddModal from '../components/Templates/AddModal';
 import EditModal from '../components/Templates/EditModal';
 import styles from '../styles/main.module.css';
@@ -51,15 +49,6 @@ export default function Home() {
   const handleSearch = (query) => {
     // 検索ワードに一致するデータを絞り込む
     const filtered = bridgedata.filter((item) => item.Name.includes(query));
-    setFilteredData(filtered);
-    if (filtered.length === 0) {
-      alert('該当するデータがありません');
-    }
-  };
-
-  const handleFilterButtonClick = (onResults) => {
-    // 絞り込みボタンが押された時の処理
-    const filtered = onResults;
     setFilteredData(filtered);
     if (filtered.length === 0) {
       alert('該当するデータがありません');

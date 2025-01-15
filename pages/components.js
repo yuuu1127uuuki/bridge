@@ -1,6 +1,5 @@
 import SearchBox from '../components/Atoms/SearchBox';
 import Button from '../components/Atoms/Button';
-import FilterButton from '../components/Molecules/FilterButton';
 import ResetButton from '../components/Molecules/ResetButton';
 import LogoutButton from '../components/Molecules/LogoutButton';
 import { useState, useEffect } from 'react';
