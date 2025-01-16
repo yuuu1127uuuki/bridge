@@ -21,7 +21,7 @@ const History = () => {
   }, []);
 
   return (
-    <div className={styles.all}>
+    <div className={styles.allHistory}>
       <div className={styles.fixedHeader}>
         <h1 className={styles.header}>修正履歴</h1>
         <HomeButton />
