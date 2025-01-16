@@ -10,8 +10,6 @@ import AddModal from '../components/Templates/AddModal';
 import EditModal from '../components/Templates/EditModal';
 import styles from '../styles/main.module.css';
 import NumberOfPins from '../components/Atoms/NumberOfPins';
-import PinDeleteButton from '../components/Molecules/PinDeleteButton';
-import IdDeleteButton from '../components/Molecules/_idDeleteButton';
 import TonnelButton from '../components/Molecules/TonnelButton';
 import Pulldowns from '../components/Molecules/Pulldowns';
 import HistoryButton from '../components/Molecules/HistoryButton';

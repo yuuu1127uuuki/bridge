@@ -9,9 +9,9 @@ import InputField from '../components/Atoms/InputField';
 import Modal from '../components/Organisms/Modal';
 import axios from 'axios';
 import React from 'react';
-import InputExcelButton from '../components/Molecules/inputExcelButton';
+// import InputExcelButton from '../components/Molecules/inputExcelButton';
 import Pulldown from '../components/Atoms/Pulldown';
-import Pulldowns from '../components/Molecules/PullDowns';
+// import Pulldowns from '../components/Molecules/PullDowns';
 
 axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
 
@@ -57,10 +57,10 @@ export default function About() {
           items={['item1', 'item2', 'item3']}
           onItemClick={handleItemClick}
         />
-        <Pulldowns />
+        {/* <Pulldowns /> */}
       </div>
       <div style={{ padding: '16px' }}>
-        <InputExcelButton />
+        {/* <InputExcelButton /> */}
         <h1>Search Box Example</h1>
         <SearchBox onSearch={handleSearch} />
         {searchResult && (
@@ -85,12 +85,12 @@ export default function About() {
         <div style={{ padding: '16px' }}>
           {/* FilterButton コンポーネントを追加 */}
           <h1>Filter Button Example</h1>
-          <FilterButton
+          {/* <FilterButton
             column="Rank"
             value="Ⅱ"
             onResults={handleFilterResults}
             text="Ⅱ"
-          />
+          /> */}
         </div>
         <div style={{ padding: '16px' }}>
           {/* ResetButton コンポーネントを追加 */}
