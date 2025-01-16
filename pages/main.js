@@ -140,60 +140,53 @@ export default function Home() {
         </div>
       ))}
       <div className={styles.all}>
-        <span className={styles.Logout}>
-          <LogoutButton />
-          <TonnelButton />
-        </span>
-
-        <h1 className={styles.header}>橋梁情報管理システム</h1>
-        <HistoryButton />
-        {/* <_idDeleteButton />
-        <PinDeleteButton /> */}
-        <SearchBox onSearch={handleSearch} />
-        <NumberOfPins count={filteredData.length} />
-        <span className={styles.reset}>
-          <ResetButton />
-        </span>
-        <span
-          style={{
-            display: 'flex',
-            marginLeft: 'auto',
-            width: '25%',
-            float: 'left',
-          }}
-        >
-          <Button
-            onClick={() => setIsAddModalOpen(true)}
-            text="新しい橋梁の追加"
-          />
-        </span>
-        <Pulldowns data={bridgedata} onFilter={handleFilter} />
-        <div className={styles.console}>
-          <ConsoleWindow
-            data={selectedMarker}
-            onDelete={handleDeleteButtonClick}
-            onEdit={() => setIsEditModalOpen(true)}
-          />
+        <div className={styles.headerContainer}>
+          <div className={styles.up}>
+            <h1 className={styles.header}>橋梁情報管理システム</h1>
+            <SearchBox onSearch={handleSearch} />
+            <div className={styles.Num}>
+              <NumberOfPins count={filteredData.length} />
+            </div>
+            <div className={styles.button} />
+            <ResetButton />
+            <TonnelButton />
+            <Button
+              onClick={() => setIsAddModalOpen(true)}
+              text="新しい橋梁の追加"
+            />
+            <HistoryButton />
+            <LogoutButton />
+          </div>
+          <div className={styles.down}>
+            <Pulldowns data={bridgedata} onFilter={handleFilter} />
+          </div>
         </div>
-        <MapConponent
-          data={filteredData}
-          selected={selectedMarker}
-          onMarkerClick={handleMarkerClick}
-        />
-        <AddModal
-          isOpen={isAddModalOpen}
-          onClose={() => setIsAddModalOpen(false)}
-          onCancel={() => setIsAddModalOpen(false)}
-          onConfirm={(data) => handleAddConfilmButtonClick(data)}
-        />
-        <EditModal
-          isOpen={isEditModalOpen}
-          onClose={() => setIsEditModalOpen(false)}
-          onCancel={() => setIsEditModalOpen(false)}
-          onConfirm={(data) => handleEditButtonClick(data)}
-          editData={selectedMarker}
+      </div>
+      <div className={styles.console}>
+        <ConsoleWindow
+          data={selectedMarker}
+          onDelete={handleDeleteButtonClick}
+          onEdit={() => setIsEditModalOpen(true)}
         />
       </div>
+      <MapConponent
+        data={filteredData}
+        selected={selectedMarker}
+        onMarkerClick={handleMarkerClick}
+      />
+      <AddModal
+        isOpen={isAddModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
+        onCancel={() => setIsAddModalOpen(false)}
+        onConfirm={(data) => handleAddConfilmButtonClick(data)}
+      />
+      <EditModal
+        isOpen={isEditModalOpen}
+        onClose={() => setIsEditModalOpen(false)}
+        onCancel={() => setIsEditModalOpen(false)}
+        onConfirm={(data) => handleEditButtonClick(data)}
+        editData={selectedMarker}
+      />
     </div>
   );
 }
