@@ -13,7 +13,7 @@ import React from 'react';
 import Pulldown from '../components/Atoms/Pulldown';
 // import Pulldowns from '../components/Molecules/PullDowns';
 
-axios.defaults.baseURL = 'https://bridge-backend-6wcu.onrender.com';
+axios.defaults.baseURL = 'https://bridge-backend-09fde0d4fb8f.herokuapp.com/';
 
 export default function About() {
   const [searchResult, setSearchResult] = useState('');

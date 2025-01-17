@@ -4,6 +4,8 @@ import styles from '../../styles/PullDowns.module.css';
 import axios from 'axios';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
+import Modal from '../Organisms/Modal';
+
 
 const currentYear = new Date().getFullYear();
 
@@ -167,8 +169,12 @@ const Pulldowns = ({ data, onFilter }) => {
     saveAs(blob, filename);
   };
 
-  const handleItemClick = (item) => {
-    console.log(item);
+  const handleDeleteClick = (item) => {
+    if (item === 'ID指定でまとめて削除') {
+      console.log('pikmin');
+    } else {
+      console.log('ピクミン');
+    }
   };
 
   return (
@@ -198,7 +204,7 @@ const Pulldowns = ({ data, onFilter }) => {
       <Pulldown
         text="まとめて削除"
         items={['ID指定でまとめて削除', 'ピンをまとめて削除']}
-        onItemClick={handleItemClick}
+        onItemClick={handleDeleteClick}
       />
     </div>
   );
