@@ -1,16 +1,17 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Pulldown from '../Atoms/Pulldown';
 import styles from '../../styles/PullDowns.module.css';
 import axios from 'axios';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
-import Modal from '../Organisms/Modal';
-
+import DeleteModal from '../Templates/DeleteModal';
 
 const currentYear = new Date().getFullYear();
 
 const Pulldowns = ({ data, onFilter }) => {
   const fileInputRef = useRef(null);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
   const handleRankClick = (item) => {
     const filteredData = data.filter((entry) => entry.Rank.includes(item));
     onFilter(filteredData);
@@ -171,10 +172,23 @@ const Pulldowns = ({ data, onFilter }) => {
 
   const handleDeleteClick = (item) => {
     if (item === 'ID指定でまとめて削除') {
-      console.log('pikmin');
+      handleOpenDeleteModal();
     } else {
       console.log('ピクミン');
     }
+  };
+
+  const handleOpenDeleteModal = () => {
+    setIsDeleteModalOpen(true);
+  };
+
+  const handleCloseDeleteModal = () => {
+    setIsDeleteModalOpen(false);
+  };
+
+  const handleConfirmDelete = () => {
+    // Handle any additional logic after confirming delete
+    setIsDeleteModalOpen(false);
   };
 
   return (
@@ -205,6 +219,12 @@ const Pulldowns = ({ data, onFilter }) => {
         text="まとめて削除"
         items={['ID指定でまとめて削除', 'ピンをまとめて削除']}
         onItemClick={handleDeleteClick}
+      />
+      <DeleteModal
+        isOpen={isDeleteModalOpen}
+        onClose={handleCloseDeleteModal}
+        onCancel={handleCloseDeleteModal}
+        onConfirm={handleConfirmDelete}
       />
     </div>
   );
