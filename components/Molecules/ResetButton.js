@@ -6,7 +6,7 @@ function ResetButton() {
     window.location.reload();
   };
 
-  return <Button onClick={handleClick} text="ホーム画面に戻る" />;
+  return <Button onClick={handleClick} text="リロード" />;
 }
 
 export default ResetButton;

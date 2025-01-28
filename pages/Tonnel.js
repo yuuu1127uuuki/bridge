@@ -10,9 +10,9 @@ import AddModal from '../components/Templates/AddModal';
 import EditModal from '../components/Templates/EditModal';
 import styles from '../styles/main.module.css';
 import NumberOfPins from '../components/Atoms/NumberOfPins';
-import TonnelButton from '../components/Molecules/TonnelButton';
 import Pulldowns from '../components/Molecules/Pulldowns';
 import HistoryButton from '../components/Molecules/HistoryButton';
+import BridgeButton from '../components/Molecules/bridgeButton';
 
 axios.defaults.baseURL = 'https://bridge-backend-09fde0d4fb8f.herokuapp.com/';
 
@@ -149,7 +149,7 @@ export default function Home() {
             </div>
             <div className={styles.button} />
             <ResetButton />
-            <TonnelButton />
+            <BridgeButton />
             <Button
               onClick={() => setIsAddModalOpen(true)}
               text="新しいトンネルの追加"
