@@ -16,8 +16,8 @@ import TonnelButton from '../components/Molecules/TonnelButton';
 import Pulldowns from '../components/Molecules/Pulldowns';
 import HistoryButton from '../components/Molecules/HistoryButton';
 
-// axios.defaults.baseURL = 'https://bridge-backend-09fde0d4fb8f.herokuapp.com/';
-axios.defaults.baseURL = 'http://localhost:8000/';
+axios.defaults.baseURL = 'https://bridge-backend-09fde0d4fb8f.herokuapp.com/';
+// axios.defaults.baseURL = 'http://localhost:8000/';
 
 export default function Home() {
   const [bridgedata, setBridgedata] = useState([]); // 橋梁データ
