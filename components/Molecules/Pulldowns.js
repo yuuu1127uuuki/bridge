@@ -112,7 +112,23 @@ const Pulldowns = ({ data, onFilter }) => {
             const response = await axios.post('/postopendata', row);
             console.log('送信されたデータ:', response.data);
           } catch (error) {
-            console.error('データの送信中にエラーが発生しました:', error);
+            if (error.response.status === 409) {
+              // Assuming 409 Conflict for existing data
+              try {
+                const response = await axios.put(
+                  `/putopendata/${row._id}`,
+                  row
+                );
+                console.log('データが更新されました:', response.data);
+              } catch (putError) {
+                console.error(
+                  'データの更新中にエラーが発生しました:',
+                  putError
+                );
+              }
+            } else {
+              console.error('データの送信中にエラーが発生しました:', error);
+            }
           }
         }
         alert('データの送信が完了しました');
