@@ -198,6 +198,7 @@ const EditModal = ({ isOpen, onClose, onCancel, onConfirm, editData }) => {
             <option value="Ⅰ">Ⅰ</option>
             <option value="Ⅱ">Ⅱ</option>
             <option value="Ⅲ">Ⅲ</option>
+            <option value="Ⅳ">Ⅳ</option>
           </select>
         </div>
       </div>
